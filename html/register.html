@@ -1,104 +1,131 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub | Register</title>
+    <title>Student Registration | StudentHub</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
 
-    <header>
-        <h1>StudentHub</h1>
+    <main class="registration-page">
+        <section class="registration-card">
+            <h1>Student Registration</h1>
+            <p>Create your StudentHub account</p>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html">Contact</a>
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
-        </nav>
-    </header>
+            <form id="registrationForm" novalidate>
 
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="Enter your full name"
+                           autocomplete="name" required>
+                    <small class="error" id="nameError"></small>
+                </div>
 
-    <main>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="student@example.com"
+                           autocomplete="email" required>
+                    <small class="error" id="emailError"></small>
+                </div>
 
-        <section>
-            <h2>Join StudentHub</h2>
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" name="mobile"
+                           placeholder="10-digit mobile number"
+                           inputmode="numeric" maxlength="10"
+                           autocomplete="tel" required>
+                    <small class="error" id="mobileError"></small>
+                </div>
 
-            <p>
-                Create your academic profile and start managing
-                your success.
-            </p>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="Create a password"
+                           autocomplete="new-password" required>
 
-            <form>
+                    <div class="strength-track">
+                        <div id="strengthBar"></div>
+                    </div>
+                    <small id="strengthText">Password strength: Not entered</small>
+                    <small class="error" id="passwordError"></small>
+                </div>
 
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name"
-                    placeholder="Prachi Modi" required>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword"
+                           name="confirmPassword"
+                           placeholder="Re-enter your password"
+                           autocomplete="new-password" required>
+                    <small class="error" id="confirmPasswordError"></small>
+                </div>
 
-                <label for="studentId">Student ID</label>
-                <input type="text" id="studentId" name="studentId"
-                    placeholder="25CSxxx" required>
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <select id="course" name="course" required>
+                        <option value="">Select your course</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BSc Computer Science">BSc Computer Science</option>
+                        <option value="BTech">B.Tech</option>
+                        <option value="MCA">MCA</option>
+                    </select>
+                    <small class="error" id="courseError"></small>
+                </div>
 
-                <label for="email">University Email</label>
-                <input type="email" id="email" name="email"
-                    placeholder="25csxxx@charusat.edu.in" required>
+                <div class="form-group">
+                    <label for="year">Year of Study</label>
+                    <select id="year" name="year" required>
+                        <option value="">Select your year</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                    </select>
+                    <small class="error" id="yearError"></small>
+                </div>
 
-                <label for="password">Password</label>
-                <input type="password" id="password"
-                    name="password" required>
+                <fieldset class="form-group gender-group">
+                    <legend>Gender</legend>
 
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword"
-                    name="confirmPassword" required>
+                    <label>
+                        <input type="radio" name="gender" value="Female">
+                        Female
+                    </label>
 
-                <label>
-                    <input type="checkbox" required>
-                    I agree to the Terms of Service and Privacy Policy.
-                </label>
+                    <label>
+                        <input type="radio" name="gender" value="Male">
+                        Male
+                    </label>
 
-                <button type="submit">Create My Account</button>
+                    <label>
+                        <input type="radio" name="gender" value="Other">
+                        Other
+                    </label>
+
+                    <small class="error" id="genderError"></small>
+                </fieldset>
+
+                <div class="form-group terms-group">
+                    <label>
+                        <input type="checkbox" id="terms" name="terms">
+                        I accept the Terms and Conditions
+                    </label>
+                    <small class="error" id="termsError"></small>
+                </div>
+
+                <button type="submit" class="register-button">
+                    Create Account
+                </button>
+
+                <p id="successMessage" role="status" aria-live="polite"></p>
 
             </form>
-
-            <p>
-                Already have an account?
-                <a href="login.html">Sign in instead</a>
-            </p>
         </section>
-
-
-        <aside>
-            <h2>Join the modern academic ecosystem.</h2>
-
-            <p>
-                Everything you need to succeed is waiting for you
-                inside. From smart timetables to real-time grade tracking.
-            </p>
-
-            <ul>
-                <li>Verified University Access</li>
-                <li>256-bit Data Encryption</li>
-                <li>Priority Student Support</li>
-            </ul>
-        </aside>
-
     </main>
 
-
-    <footer>
-        <p>StudentHub © 2026</p>
-
-        <nav>
-            <a href="#">Help Center</a>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-        </nav>
-    </footer>
-
+    <script src="../js/script.js"></script>
 </body>
-
 </html>

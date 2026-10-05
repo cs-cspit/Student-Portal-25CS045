@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudentHub | Home</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -36,7 +37,9 @@
                 connected with your campus all in one interface.
             </p>
 
-            <a href="register.html">Get Started for Free</a>
+            <button id="openModal" class="modal-button">
+                     Get Started for Free
+            </button>
             <a href="#features">Explore Features</a>
 
             <p>Join 10,000+ students already using StudentHub</p>
@@ -56,10 +59,11 @@
 
         <section id="features">
 
-            <p>EVERYTHING YOU NEED</p>
-            <h2>Powerful Tools for Success</h2>
-
-            <a href="#">View all 20+ tools</a>
+            <div class="feature-heading">
+                <p>EVERYTHING YOU NEED</p>
+                <h2>Powerful Tools for Success</h2>
+                <a href="#">View all 20+ tools</a>
+            </div>
 
             <article>
                 <h3>Course Mastery</h3>
@@ -86,6 +90,27 @@
             </article>
 
         </section>
+
+        <div id="welcomeModal" class="modal">
+    <div class="modal-content">
+
+        <button id="closeModal" class="close-modal" aria-label="Close">
+            &times;
+        </button>
+
+        <h2>Welcome to StudentHub!</h2>
+
+        <p>
+            Create your account and start managing your
+            academic journey in one place.
+        </p>
+
+        <a href="register.html" class="modal-link">
+            Create My Account
+        </a>
+
+    </div>
+</div>
 
     </main>
 
@@ -135,7 +160,7 @@
         </p>
 
     </footer>
-
+    <script src="../js/script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,1138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f7fb;
+    color: #1e293b;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 600;
+}
+
+main > section > p:first-child {
+    font-family: "Baloo 2", sans-serif;
+    color: #6366f1;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+/* Header */
+
+header {
+    background: #172554;
+    color: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Main */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+main > section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+main > section:first-child {
+    text-align: center;
+    background: #e0e7ff;
+}
+
+main h2 {
+    color: #172554;
+    margin: 10px 0;
+}
+
+main a {
+    color: #2563eb;
+    margin-right: 15px;
+}
+
+
+/* CSS Grid */
+
+#features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feature-heading {
+    grid-column: 1 / -1;
+}
+
+#features article {
+    padding: 20px;
+    background: #f1f5f9;
+    border-radius: 8px;
+}
+
+#features article h3 {
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+
+/* Flexbox */
+
+.stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stats article {
+    flex: 1;
+    background: #eef2ff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+
+/* FAQ */
+
+.faq-list {
+    margin-top: 25px;
+}
+
+.faq-item {
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px 20px;
+    border: none;
+    background: white;
+    color: #1e293b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #f8fafc;
+}
+
+.faq-question span {
+    font-size: 22px;
+    color: #6366f1;
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 20px 18px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+
+/* Modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 450px;
+    width: 100%;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: modalOpen 0.3s ease;
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-button,
+.modal-link {
+    display: inline-block;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #6366f1;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Event Portal */
+
+.portal-page {
+    background: #f5f7fb;
+}
+
+.portal-page header {
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.portal-page header h1 {
+    font-size: 30px;
+    margin-right: auto;
+}
+
+.portal-page header input {
+    width: 250px;
+    padding: 9px 14px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+.portal-page header p {
+    white-space: nowrap;
+}
+
+
+/* Portal Layout */
+
+.portal-page main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.portal-page main > section {
+    width: 100%;
+    min-width: 0;
+}
+
+.portal-page main > aside {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+}
+
+.portal-page aside h2 {
+    font-size: 15px;
+    color: #6366f1;
+    margin: 8px 0 12px;
+}
+
+.portal-page aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+.portal-page aside a {
+    display: block;
+    padding: 7px 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #475569;
+    margin: 0;
+}
+
+.portal-page aside a:hover {
+    background: #eef2ff;
+    color: #6366f1;
+}
+
+.portal-page main > section {
+    margin: 0;
+    padding: 30px;
+}
+
+/* Event Slider */
+
+.event-slider {
+    position: relative;
+    min-height: 330px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.event-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: 28px;
+    border-radius: 14px;
+    background: #eef2ff;
+    border: 1px solid #dbe4ff;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.event-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Smooth entrance */
+
+.event-slide.slide-next {
+    animation: slideFromRight 0.4s ease forwards;
+}
+
+.event-slide.slide-previous {
+    animation: slideFromLeft 0.4s ease forwards;
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.event-slide p:first-child {
+    font-family: "Baloo 2", sans-serif;
+    color: #6366f1;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.event-slide h3 {
+    font-size: 25px;
+    color: #172554;
+    margin: 5px 0;
+}
+
+.slider-buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-buttons button {
+    padding: 10px 17px;
+    border: none;
+    border-radius: 8px;
+    background: #6366f1;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.slider-buttons button:hover {
+    transform: translateY(-2px);
+}
+
+/* More Events */
+
+.portal-page main > section > section {
+    margin-top: 30px;
+}
+
+.portal-page main > section > section article {
+    padding: 18px;
+    margin-top: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #fafbff;
+}
+
+.portal-page main > section > section article h4 {
+    font-family: "Baloo 2", sans-serif;
+    color: #172554;
+    font-size: 18px;
+}
+
+.portal-page main > section > section button {
+    margin-top: 15px;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #e2e8f0;
+    color: #1e293b;
+    cursor: pointer;
+}
+
+.portal-page main > section > button {
+    margin-top: 20px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #6366f1;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* Footer */
+
+footer {
+    background: #172554;
+    color: white;
+    padding: 25px 5%;
+    margin-top: 30px;
+}
+
+footer a {
+    color: #bfdbfe;
+}
+
+footer input {
+    padding: 8px;
+    width: 100%;
+}
+
+footer button {
+    margin-top: 8px;
+    padding: 8px 15px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #features {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        flex-direction: column;
+    }
+
+    .portal-page header {
+        align-items: stretch;
+    }
+
+    .portal-page header h1 {
+        margin-right: 0;
+    }
+
+    .portal-page header input {
+        width: 100%;
+    }
+
+    .portal-page main {
+        grid-template-columns: 1fr;
+    }
+
+    .portal-page main > aside {
+        order: 1;
+    }
+
+    .portal-page main > section {
+        order: 2;
+    }
+
+    .portal-page aside nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .portal-page aside a {
+        background: #f1f5f9;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Hamburger Menu */
+
+.menu-button {
+    display: block;
+    width: 60px;
+    height: 45px;
+    border: none;
+    background: #6366f1;
+    color: white;
+    border-radius: 8px;
+    font-size: 22px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.menu-button:hover {
+    transform: scale(1.05);
+}
+
+.portal-page main > aside {
+    display: none;
+}
+
+.portal-page main > aside.show {
+    display: block;
+}
+ 
+/* Light/Dark Theme */
+
+.theme-button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #eef2ff;
+    color: #172554;
+    cursor: pointer;
+}
+
+body.dark-theme {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+body.dark-theme main > aside,
+body.dark-theme main > section {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+/* Headings and text */
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4 {
+    color: #f1f5f9;
+}
+
+body.dark-theme p {
+    color: #cbd5e1;
+}
+
+/* Sidebar */
+
+body.dark-theme aside a {
+    color: #cbd5e1;
+}
+
+body.dark-theme aside a:hover {
+    background: #334155;
+    color: #a5b4fc;
+}
+
+/* Event Slider */
+
+body.dark-theme .event-slide {
+    background: #273449;
+    border-color: #475569;
+}
+
+body.dark-theme .event-slide p {
+    color: #cbd5e1;
+}
+
+body.dark-theme .event-slide p:first-child {
+    color: #a5b4fc;
+}
+
+body.dark-theme .event-slide h3 {
+    color: #f1f5f9;
+}
+
+body.dark-theme .event-slide a {
+    color: #a5b4fc;
+}
+
+/* More Events */
+
+body.dark-theme main > section > section article {
+    background: #273449;
+    border: 1px solid #475569;
+}
+
+body.dark-theme main > section > section article p {
+    color: #cbd5e1;
+}
+
+body.dark-theme main > section > section article h4 {
+    color: #f1f5f9;
+}
+
+/* Buttons */
+
+body.dark-theme .theme-button {
+    background: #334155;
+    color: #f1f5f9;
+}
+
+body.dark-theme .slider-buttons button {
+    background: #6366f1;
+    color: white;
+}
+
+/* FAQ */
+
+body.dark-theme .faq-item,
+body.dark-theme .faq-question {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark-theme .faq-answer {
+    color: #cbd5e1;
+}
+
+/* Modal */
+
+body.dark-theme .modal-content {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark-theme .modal-content p {
+    color: #cbd5e1;
+}
+
+/* Mobile Sidebar Fix */
+
+@media (max-width: 700px) {
+
+    .portal-page main > aside.show {
+        display: block;
+        background: #1e293b;
+        padding: 25px;
+        border-radius: 16px;
+    }
+
+    .portal-page main > aside.show a {
+        display: block;
+        width: 100%;
+        padding: 10px 12px;
+        margin: 3px 0;
+        background: transparent;
+        color: #cbd5e1;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+
+    .portal-page main > aside.show a:hover {
+        background: #334155;
+        color: #a5b4fc;
+    }
+
+    .portal-page main > aside.show h4 {
+        margin-top: 20px;
+        margin-bottom: 8px;
+        color: #818cf8;
+    }
+
+    .portal-page main > aside.show h4:first-child {
+        margin-top: 0;
+    }
+}
+
+/* Notification Banner */
+
+.notification-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    background: #eef2ff;
+    color: #3730a3;
+    border-left: 5px solid #6366f1;
+    border-radius: 10px;
+    animation: bannerSlide 0.4s ease;
+}
+
+.notification-banner p {
+    margin: 0;
+    color: #3730a3;
+}
+
+.notification-banner button {
+    border: none;
+    background: transparent;
+    color: #3730a3;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.notification-banner.hide {
+    display: none;
+}
+
+@keyframes bannerSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dark Theme */
+
+body.dark-theme .notification-banner {
+    background: #273449;
+    border-left-color: #818cf8;
+}
+
+body.dark-theme .notification-banner p,
+body.dark-theme .notification-banner button {
+    color: #e2e8f0;
+}
+
+.portal-page .notification-banner {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 0;
+    grid-column: 1;
+}
+
+.portal-page main > section {
+    grid-column: 1;
+}
+
+
+
+/* =================================
+   Practical 5: StudentHub Registration
+   Soft Pastel UI
+================================= */
+
+:root {
+    --thistle: #cdb4db;
+    --pastel-petal: #ffc8dd;
+    --baby-pink: #ffafcc;
+    --icy-blue: #bde0fe;
+    --sky-blue: #a2d2ff;
+
+    --heading: #40334c;
+    --text: #62596c;
+    --muted: #898192;
+    --white: #ffffff;
+    --border: #eee6f2;
+}
+
+/* Page Background */
+
+body:has(.registration-page) {
+    min-height: 100vh;
+    margin: 0;
+    background: #f5f8ff;
+    color: var(--heading);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Soft Background Decorations */
+
+body:has(.registration-page)::before,
+body:has(.registration-page)::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(1px);
+}
+
+body:has(.registration-page)::before {
+    width: 320px;
+    height: 320px;
+    top: -100px;
+    right: -90px;
+    background: rgba(189, 224, 254, 0.55);
+}
+
+body:has(.registration-page)::after {
+    width: 280px;
+    height: 280px;
+    bottom: -100px;
+    left: -90px;
+    background: rgba(255, 200, 221, 0.45);
+}
+
+/* Page Layout */
+
+.registration-page {
+    position: relative;
+    z-index: 1;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 28px 24px 50px;
+}
+
+/* StudentHub Header */
+
+.registration-page::before {
+    content: "✦  StudentHub";
+    display: block;
+    margin: 0 0 28px 4px;
+    color: #59476a;
+    font-size: 25px;
+    font-weight: 750;
+    letter-spacing: -0.7px;
+}
+
+/* Registration Card */
+
+.registration-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 38px 44px;
+    background: var(--white);
+    border: 1px solid #eee7f2;
+    border-radius: 22px;
+    box-shadow: 0 16px 50px rgba(83, 65, 103, 0.08);
+}
+
+/* Remove Previous Welcome Panel */
+
+.registration-card::before {
+    content: none;
+    display: none;
+}
+
+/* Heading */
+
+.registration-card h1 {
+    color: var(--heading);
+    font-size: 31px;
+    line-height: 1.25;
+    margin: 0 0 8px;
+}
+
+.registration-card > p {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0 0 28px;
+}
+
+/* Two-Column Form */
+
+.registration-card form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 0;
+    min-width: 0;
+}
+
+.registration-card .form-group {
+    min-width: 0;
+    margin-bottom: 20px;
+}
+
+/* Make Gender and Terms Full Width */
+
+.registration-card .gender-group,
+.registration-card .terms-group,
+.registration-card .register-button,
+.registration-card #successMessage {
+    grid-column: 1 / -1;
+}
+
+/* Labels */
+
+.registration-card .form-group > label,
+.registration-card .form-group > legend {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--heading);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Inputs and Selects */
+
+.registration-card .form-group input:not([type="radio"]):not([type="checkbox"]),
+.registration-card .form-group select {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 13px 14px;
+    border: 1px solid #e5dceB;
+    border-radius: 10px;
+    background: #fcfbfe;
+    color: var(--heading);
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.registration-card .form-group input::placeholder {
+    color: #a49baa;
+}
+
+.registration-card .form-group input:focus,
+.registration-card .form-group select:focus {
+    border-color: #b39ac5;
+    box-shadow: 0 0 0 3px rgba(205, 180, 219, 0.25);
+    background: #ffffff;
+}
+
+/* Validation States */
+
+.registration-card .form-group .valid {
+    border-color: #58a985 !important;
+    background: #f5fcf8 !important;
+}
+
+.registration-card .form-group .invalid {
+    border-color: #dc718c !important;
+    background: #fff7f9 !important;
+}
+
+.error {
+    display: block;
+    margin-top: 6px;
+    color: #c34464;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Gender Options */
+
+.gender-group {
+    border: none;
+    padding: 0;
+}
+
+.registration-card .gender-group label,
+.registration-card .terms-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 18px 5px 0;
+    color: var(--text);
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.gender-group input,
+.terms-group input {
+    width: 16px;
+    height: 16px;
+    accent-color: #a88cbb;
+    cursor: pointer;
+}
+
+/* Terms */
+
+.terms-group {
+    box-sizing: border-box;
+    padding: 14px 16px;
+    background: #faf6fc;
+    border: 1px solid #eee4f3;
+    border-radius: 10px;
+}
+
+/* Password Strength */
+
+.strength-track {
+    height: 6px;
+    background: #eee8f2;
+    border-radius: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+#strengthBar {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.3s, background 0.3s;
+}
+
+#strengthText {
+    display: block;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Submit Button */
+
+.register-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #b69ac9;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.register-button:hover {
+    background: #9f80b5;
+    transform: translateY(-1px);
+}
+
+.register-button:focus-visible {
+    outline: 3px solid var(--sky-blue);
+    outline-offset: 3px;
+}
+
+#successMessage {
+    color: #21865b;
+    text-align: center;
+    margin: 14px 0 0;
+    font-weight: 600;
+}
+
+/* Tablet and Mobile */
+
+@media (max-width: 700px) {
+    .registration-page {
+        padding: 22px 14px 35px;
+    }
+
+    .registration-page::before {
+        font-size: 23px;
+        margin-bottom: 22px;
+    }
+
+    .registration-card {
+        padding: 28px 24px;
+    }
+
+    .registration-card form {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-card .form-group,
+    .registration-card .gender-group,
+    .registration-card .terms-group,
+    .registration-card .register-button,
+    .registration-card #successMessage {
+        grid-column: 1;
+    }
+
+    .registration-card h1 {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 420px) {
+    .registration-card {
+        padding: 22px 17px;
+        border-radius: 16px;
+    }
+
+    .registration-card h1 {
+        font-size: 24px;
+    }
+}

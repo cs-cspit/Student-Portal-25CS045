@@ -4,10 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>StudentHub | Events</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="portal-page">
 
     <header>
         <h1>StudentHub</h1>
@@ -16,12 +21,25 @@
 
         <p>Computer Science • 25CSxxx</p>
         <p>Prachi Modi</p>
+        <button id="themeButton" class="theme-button" type="button">
+            🌙 Dark Mode
+        </button>
     </header>
 
 
     <main>
+        <div id="notificationBanner" class="notification-banner">
+    <p>
+        📢 Reminder: The Annual Tech Symposium is coming up on
+        October 25, 2026!
+    </p>
 
-        <aside>
+    <button id="closeNotification" type="button" aria-label="Close notification">
+        &times;
+    </button>
+</div>
+        <button id="menuButton" class="menu-button" aria-label="Open navigation menu">  ☰ </button>
+        <aside id="mobileMenu">
             <h2>MAIN MENU</h2>
 
             <nav>
@@ -57,48 +75,70 @@
             </p>
 
 
-            <section>
-                <h3>Featured Upcoming Events</h3>
+           <section>
+    <h3>Featured Upcoming Events</h3>
 
-                <article>
-                    <p>ACADEMIC</p>
-                    <p>Oct 25, 2026 • 09:00 AM</p>
-                    <h3>Annual Tech Symposium 2026</h3>
-                    <p>
-                        Join industry leaders for a day of networking
-                        and innovation in the main auditorium.
-                    </p>
-                    <p>Main Hall</p>
-                    <a href="#">View Details</a>
-                </article>
+    <div class="event-slider">
 
+        <article class="event-slide active">
+            <p>ACADEMIC</p>
+            <p>Oct 25, 2026 • 09:00 AM</p>
 
-                <article>
-                    <p>UNIVERSITY</p>
-                    <p>Oct 28, 2026 • 10:00 AM</p>
-                    <h3>Campus Sports Festival</h3>
-                    <p>
-                        Inter-departmental sports competitions followed
-                        by a celebratory dinner.
-                    </p>
-                    <p>Sports Complex</p>
-                    <a href="#">View Details</a>
-                </article>
+            <h3>Annual Tech Symposium 2026</h3>
+
+            <p>
+                Join industry leaders for a day of networking
+                and innovation in the main auditorium.
+            </p>
+
+            <p>Main Hall</p>
+            <a href="#">View Details</a>
+        </article>
 
 
-                <article>
-                    <p>CAREER</p>
-                    <p>Nov 02, 2026 • 11:00 AM</p>
-                    <h3>Winter Career Fair</h3>
-                    <p>
-                        Meet top recruiters and explore internship
-                        opportunities.
-                    </p>
-                    <p>Student Union</p>
-                    <a href="#">View Details</a>
-                </article>
+        <article class="event-slide">
+            <p>UNIVERSITY</p>
+            <p>Oct 28, 2026 • 10:00 AM</p>
 
-            </section>
+            <h3>Campus Sports Festival</h3>
+
+            <p>
+                Inter-departmental sports competitions followed
+                by a celebratory dinner.
+            </p>
+
+            <p>Sports Complex</p>
+            <a href="#">View Details</a>
+        </article>
+
+
+        <article class="event-slide">
+            <p>CAREER</p>
+            <p>Nov 02, 2026 • 11:00 AM</p>
+
+            <h3>Winter Career Fair</h3>
+
+            <p>
+                Meet top recruiters and explore internship
+                opportunities.
+            </p>
+
+            <p>Student Union</p>
+            <a href="#">View Details</a>
+        </article>
+
+        <div class="slider-buttons">
+            <button type="button" id="prevEvent" aria-label="Previous event">
+                ← Previous
+            </button>
+
+            <button type="button" id="nextEvent" aria-label="Next event">
+                Next →
+            </button>
+        </div>
+
+    </div>
+</section>
 
 
             <section>
@@ -145,7 +185,7 @@
     <footer>
         <p>© 2026 StudentHub. All rights reserved.</p>
     </footer>
-
+    <script src="../js/script.js"></script>
 </body>
 
 </html>
