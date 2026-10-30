@@ -82,38 +82,6 @@ $dashboardUrl = app_dashboard_url($userRole);
         </div>
         <p class="field-note" style="margin-top:14px;">Students register with university ID and email. Admins access system management via single sign-in.</p>
       </div>
-
-      <div class="landing-preview" aria-label="Preview of the StudentHub academic workspace">
-        <div class="preview-top">
-          <span class="preview-brand"><i>S</i> StudentHub Workspace</span>
-          <span class="badge badge-info" style="font-size:11px;">Term 4 · Fall 2026</span>
-        </div>
-        <div class="preview-content">
-          <h2 style="font-size:18px;margin:0 0 16px;">Semester at a glance</h2>
-          <div class="preview-cards">
-            <div>
-              <small>ENROLLED</small>
-              <strong>5 Courses</strong>
-              <span>Active syllabus</span>
-            </div>
-            <div>
-              <small>ATTENDANCE</small>
-              <strong>90.3%</strong>
-              <span style="color:var(--success);">Satisfactory</span>
-            </div>
-            <div>
-              <small>DELIVERABLES</small>
-              <strong>3 Due</strong>
-              <span style="color:var(--warning);">This week</span>
-            </div>
-          </div>
-          <div class="preview-lines">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="landing-features">
