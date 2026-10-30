@@ -3,3 +3,4 @@
 -- always inserts a non-null password_hash for newly registered accounts.
 ALTER TABLE students
   ADD COLUMN password_hash VARCHAR(255) DEFAULT NULL AFTER course;
+

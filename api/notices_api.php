@@ -19,3 +19,4 @@ echo json_encode([
     'notices' => $notices
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
+

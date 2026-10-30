@@ -44,3 +44,4 @@
 - **`practical13/`**: Asynchronous Fetch API event client and JSON endpoint.
 - **`practical14/`**: Executive command dashboard, role-segregated navigation rails, and security audit log.
 - **`archive/previous-version/`**: Inactive prototype files and earlier HTML templates safely archived for reference.
+

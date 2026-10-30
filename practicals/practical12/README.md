@@ -7,3 +7,4 @@ For an existing database, select `studenthub` in phpMyAdmin, open **SQL**, and r
 ## Evidence checklist
 
 Capture these from the running XAMPP site: Admin login/dashboard; event creation, list with poster, update, and deletion; valid poster upload; invalid file type and over-2-MB validation; success/error messages; and a non-Admin denied from `admin_events.php`. Screenshots must come from the live site; none are claimed in this project note.
+

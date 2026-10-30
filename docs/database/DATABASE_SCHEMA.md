@@ -91,3 +91,4 @@ Automated security audit trail logging all administrative and security actions.
    SOURCE practicals/practical10/user_registration.sql;
    ```
 
+

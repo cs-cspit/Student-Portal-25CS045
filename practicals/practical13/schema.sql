@@ -17,3 +17,4 @@ CREATE TABLE IF NOT EXISTS events (
   PRIMARY KEY (event_id),
   KEY idx_events_date_status (event_date, status)
 ) ENGINE=InnoDB;
+

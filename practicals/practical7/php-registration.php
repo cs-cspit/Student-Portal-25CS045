@@ -95,3 +95,4 @@ function practical7_escape(string $value): string
   </main>
 </body>
 </html>
+

@@ -106,3 +106,4 @@ $studentInitials = app_get_initials($studentName);
     </form>
   </div>
 </aside>
+

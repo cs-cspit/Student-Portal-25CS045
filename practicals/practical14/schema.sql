@@ -12,3 +12,4 @@ CREATE TABLE IF NOT EXISTS audit_logs (
   KEY idx_audit_created (created_at),
   KEY idx_audit_actor (actor_email)
 ) ENGINE=InnoDB;
+

@@ -12,3 +12,4 @@ For an existing database, run `migrations/006_create_audit_logs.sql` once in php
 - `audit_logs` table showing Admin actions after login and record changes.
 
 Screenshots must be captured from the running XAMPP site; none are included here.
+

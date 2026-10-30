@@ -48,3 +48,4 @@ The `.gitignore` file has been configured to ensure:
 - **Tracked**: All PHP source code, modules (`student/`, `admin/`, `api/`, `pages/`), styles (`css/`), scripts (`js/`), database schemas (`database/`, `migrations/`), university logos (`images/`), comprehensive documentation (`docs/`), and academic practicals (`practicals/`).
 - **Ignored**: Temporary session dumps, IDE configurations (`.vscode`, `.idea`), OS artifacts (`Thumbs.db`, `.DS_Store`), and large binary temporary files.
 
+

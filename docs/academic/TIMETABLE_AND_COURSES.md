@@ -65,3 +65,4 @@
 - **Principal**: Dr. Trushit K Upadhyaya
 - **Dean**: Dr. Vijaykumar P Chaudhary
 
+

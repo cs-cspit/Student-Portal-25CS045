@@ -78,3 +78,4 @@ try {
     error_log('StudentHub event API failed: '.$error->getMessage());
     api_reply(['ok'=>false,'message'=>'Event operation failed. Check the database setup.'],500);
 }
+

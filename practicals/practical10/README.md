@@ -25,3 +25,4 @@ Student accounts continue to use `register.php` and require student ID and cours
 Use `test-report.md` for the test results and screenshot checklist. Capture evidence from the running site for both successful roles, invalid credentials, role denials, logout, blocked dashboard access after logout, idle timeout, and the changed session ID.
 
 The separate `style.css` stylesheet in this folder contains the Practical 10 dashboard and access-message styling. StudentHub's existing `css/auth.css` and `css/studyhub.css` continue to provide the shared portal design.
+

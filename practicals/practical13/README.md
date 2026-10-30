@@ -7,3 +7,4 @@ The `index.html` entry redirects to the integrated Events tab. A new install sho
 ## Screenshot evidence
 
 Capture the Admin login/dashboard, event list, successful add/edit/delete, valid and invalid poster uploads, size limit error, success/error messages, and unauthorized access. Use DevTools → Network → Fetch/XHR to capture request status and JSON response. Screenshots must come from the live XAMPP site; none are included here.
+

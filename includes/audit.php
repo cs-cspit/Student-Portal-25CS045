@@ -19,3 +19,4 @@ function app_audit_log(string $action, string $details = ''): void
         error_log('StudentHub audit log failed: ' . $error->getMessage());
     }
 }
+

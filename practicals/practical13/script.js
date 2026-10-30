@@ -66,3 +66,4 @@ form.addEventListener('submit',async event=>{
 document.querySelector('#cancel-edit').addEventListener('click',resetForm);
 document.querySelector('#reload-events').addEventListener('click',loadEvents);
 loadEvents();
+

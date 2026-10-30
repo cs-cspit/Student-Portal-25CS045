@@ -31,3 +31,4 @@
 - [ ] Validate on both desktop and a narrow/mobile viewport.
 
 Screenshots and results are intentionally left pending until captured from the local deployment.
+

@@ -18,3 +18,4 @@ The portal registration page at `../../register.php` validates every required fi
 6. In phpMyAdmin, inspect `studenthub.students.password_hash`. The saved value is a one-way hash and does not equal the submitted password.
 
 The project retains its CSV account storage and the existing practical work. The MySQL password column is nullable only to support demo/event-only student profiles; registration always writes a password hash.
+

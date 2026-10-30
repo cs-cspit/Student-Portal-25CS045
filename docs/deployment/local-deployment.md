@@ -24,3 +24,4 @@ Add this to XAMPP Apache's `conf/extra/httpd-vhosts.conf` and adjust the folder 
 ```
 
 Enable the virtual-host include in `httpd.conf`, add `127.0.0.1 studenthub.local` to the Windows hosts file, restart Apache, then open `http://studenthub.local/`.
+

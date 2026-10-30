@@ -123,3 +123,4 @@ require dirname(__DIR__) . '/includes/layout_head.php';
     <?php require dirname(__DIR__) . '/includes/bottom_nav.php'; ?>
     <?php require dirname(__DIR__) . '/includes/layout_footer.php'; ?>
 
+

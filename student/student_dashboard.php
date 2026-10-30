@@ -46,3 +46,4 @@ require dirname(__DIR__) . '/includes/layout_head.php';
     window.addEventListener("pageshow", event => { if (event.persisted) window.location.reload(); });
   </script>
   <script src="<?= app_base_url() ?>js/studyhub.js?v=2.3"></script>
+

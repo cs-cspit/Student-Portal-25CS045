@@ -203,3 +203,4 @@ function app_delete_help_request(string $ticketId): bool
     return false;
 }
 
+

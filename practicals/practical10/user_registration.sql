@@ -30,3 +30,4 @@ ON DUPLICATE KEY UPDATE
   email = VALUES(email),
   password_hash = VALUES(password_hash),
   role = VALUES(role);
+

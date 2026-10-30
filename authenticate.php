@@ -133,3 +133,4 @@ $_SESSION['captcha_b'] = random_int(1, 9);
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 header('Location: login.php', true, 303);
 exit;
+

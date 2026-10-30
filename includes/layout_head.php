@@ -33,3 +33,4 @@ if (!isset($portalType)) {
 </head>
 <body class="<?= $portalType === 'admin' ? 'admin-page' : 'student-page' ?>">
 
+

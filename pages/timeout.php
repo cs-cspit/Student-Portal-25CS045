@@ -10,3 +10,4 @@ if (!isset($_GET['expired'])) {
 $_SESSION['login_notice'] = 'Your session expired due to inactivity. Please sign in again.';
 header('Location: ../login.php?timeout=1', true, 303);
 exit;
+

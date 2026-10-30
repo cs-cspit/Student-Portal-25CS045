@@ -9,3 +9,4 @@ CREATE TABLE IF NOT EXISTS admins (
   PRIMARY KEY (admin_id),
   UNIQUE KEY uq_admins_email (email)
 ) ENGINE=InnoDB;
+

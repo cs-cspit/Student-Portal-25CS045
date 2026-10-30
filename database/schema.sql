@@ -115,3 +115,4 @@ INSERT IGNORE INTO registrations (student_id, event_id, status)
 VALUES
   ('DEMO001', 1, 'registered'),
   ('DEMO002', 2, 'registered');
+

@@ -126,3 +126,4 @@ try {
     events_api_reply(['ok' => false, 'message' => 'Registration could not be completed. Check the database setup and try again.'], 503);
 }
 
+

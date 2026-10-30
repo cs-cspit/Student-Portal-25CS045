@@ -13,3 +13,4 @@ app_audit_log('admin.logout', 'Administrator signed out');
 app_destroy_session();
 header('Location: login.php?logged_out=1', true, 303);
 exit;
+

@@ -67,3 +67,4 @@ This guarantees high contrast, zero color clash, and clear visibility on every s
 - **Stat Cards**: Icon badge, large tabular number, helper subtitle without redundant numbering.
 - **Batch Cards**: Distinct colored badges for laboratory practical batches (`A1` Blue, `B1` Teal, `C1` Amber).
 
+

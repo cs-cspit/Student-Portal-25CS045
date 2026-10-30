@@ -66,3 +66,4 @@ The portal utilizes a hybrid dual-persistence model:
 | :--- | :--- | :--- | :--- |
 | **Student** | `student.demo@example.edu` *(or `25CS045`)* | `Student@12345` | Student Workspace, Timetable, Attendance, Assignments, Help Desk |
 | **Administrator** | `admin.demo@example.edu` | `Admin@12345` | Command Center, Student CRUD, Events, Circulars, Inquiry Review, Audit Logs |
+

@@ -111,3 +111,4 @@ function app_accounts_path(): string
 }
 
 app_start_session();
+

@@ -17,3 +17,4 @@ The nine scenarios below were exercised against a disposable MariaDB database na
 | 9 | Compare session ID before and after login | The session ID changes after successful authentication | Passed | Capture browser network/session evidence if required |
 
 The test run confirms the server-side behavior. Capture the listed screenshots from the running project for the visual submission; none are represented as already captured.
+

@@ -133,3 +133,4 @@ $categories = array_values(array_unique(array_column($faqs, 'category')));
 </body>
 </html>
 
+

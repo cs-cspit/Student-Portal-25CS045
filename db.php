@@ -58,3 +58,4 @@ function app_mysqli(): mysqli
         throw new RuntimeException('Authentication database unavailable. Check MySQL and the Practical 10 SQL setup.', 0, $error);
     }
 }
+

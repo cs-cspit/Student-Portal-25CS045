@@ -18,3 +18,4 @@ Sign in with an Admin account and open `student_management.php` from the Admin d
 - Show a success/error notice and open the exported CSV in Excel.
 
 Screenshots must be captured from the running local XAMPP project; this checklist does not claim that screenshots have been captured.
+
