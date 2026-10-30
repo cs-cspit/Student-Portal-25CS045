@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "title": "Freshers Welcome 2026",
+        "category": "Campus",
+        "date": "2026-07-15",
+        "venue": "Main Auditorium",
+        "description": "Welcome event for newly admitted students."
+    },
+    {
+        "id": 2,
+        "title": "Web Development Workshop",
+        "category": "Workshop",
+        "date": "2026-07-20",
+        "venue": "Computer Lab 1",
+        "description": "Hands-on workshop covering HTML, CSS and JavaScript."
+    },
+    {
+        "id": 3,
+        "title": "Coding Competition",
+        "category": "Competition",
+        "date": "2026-07-25",
+        "venue": "Programming Lab",
+        "description": "Programming competition for students interested in problem solving."
+    },
+    {
+        "id": 4,
+        "title": "Tech Talk: Artificial Intelligence",
+        "category": "Seminar",
+        "date": "2026-08-02",
+        "venue": "Seminar Hall",
+        "description": "Interactive session introducing modern artificial intelligence."
+    },
+    {
+        "id": 5,
+        "title": "Independence Day Celebration",
+        "category": "Cultural",
+        "date": "2026-08-15",
+        "venue": "College Ground",
+        "description": "Cultural program and celebration of Independence Day."
+    },
+    {
+        "id": 6,
+        "title": "Git and GitHub Workshop",
+        "category": "Workshop",
+        "date": "2026-08-20",
+        "venue": "Computer Lab 2",
+        "description": "Learn version control and collaborative development using GitHub."
+    },
+    {
+        "id": 7,
+        "title": "Photography Contest",
+        "category": "Competition",
+        "date": "2026-08-28",
+        "venue": "Student Activity Center",
+        "description": "Photography competition based on campus life."
+    },
+    {
+        "id": 8,
+        "title": "Cyber Security Awareness",
+        "category": "Seminar",
+        "date": "2026-09-05",
+        "venue": "Main Auditorium",
+        "description": "Awareness session about online safety and cyber security."
+    },
+    {
+        "id": 9,
+        "title": "Sports Day",
+        "category": "Sports",
+        "date": "2026-09-12",
+        "venue": "Sports Ground",
+        "description": "Annual sports event featuring multiple competitions."
+    },
+    {
+        "id": 10,
+        "title": "Hackathon 2026",
+        "category": "Competition",
+        "date": "2026-09-20",
+        "venue": "Innovation Center",
+        "description": "A 24-hour hackathon focused on innovative technology solutions."
+    },
+    {
+        "id": 11,
+        "title": "Resume Building Session",
+        "category": "Career",
+        "date": "2026-09-25",
+        "venue": "Seminar Hall",
+        "description": "Session on creating an effective technical resume."
+    },
+    {
+        "id": 12,
+        "title": "Placement Preparation Workshop",
+        "category": "Career",
+        "date": "2026-10-02",
+        "venue": "Training Hall",
+        "description": "Preparation session covering aptitude and technical interviews."
+    },
+    {
+        "id": 13,
+        "title": "Navratri Celebration",
+        "category": "Cultural",
+        "date": "2026-10-10",
+        "venue": "College Ground",
+        "description": "Traditional Garba and cultural celebration."
+    },
+    {
+        "id": 14,
+        "title": "Java Programming Workshop",
+        "category": "Workshop",
+        "date": "2026-10-18",
+        "venue": "Computer Lab 1",
+        "description": "Practical workshop covering object-oriented programming in Java."
+    },
+    {
+        "id": 15,
+        "title": "Annual Tech Fest",
+        "category": "Campus",
+        "date": "2026-11-05",
+        "venue": "University Campus",
+        "description": "Annual technology festival featuring projects, competitions and exhibitions."
+    }
+]

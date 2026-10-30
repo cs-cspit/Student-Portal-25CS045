@@ -1,0 +1,184 @@
+/* Registration experience: clean, focused, and consistent with StudentHub. */
+:root {
+    --hub-ink: #172b4d;
+    --hub-muted: #66758b;
+    --hub-line: #dce4ee;
+    --hub-accent: #4d5fe5;
+}
+
+body.portal-page:has(.php-form-section) {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f4f7fb;
+    color: var(--hub-ink);
+}
+
+body.portal-page:has(.php-form-section)::before,
+body.portal-page:has(.php-form-section)::after { display: none; }
+
+body.portal-page:has(.php-form-section) > header {
+    width: 100%;
+    padding: 16px max(24px, calc((100% - 1120px) / 2));
+    gap: 28px;
+    box-shadow: 0 1px 0 rgba(23,43,77,.08);
+}
+
+body.portal-page:has(.php-form-section) > header h1 {
+    margin-right: auto;
+    color: var(--hub-ink);
+    font: 750 22px/1.2 "Segoe UI", sans-serif;
+    letter-spacing: -.5px;
+}
+
+body.portal-page:has(.php-form-section) > header h1::before {
+    content: "S";
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+    border-radius: 10px;
+    color: #fff;
+    background: var(--hub-accent);
+    font-size: 17px;
+}
+
+body.portal-page:has(.php-form-section) > header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+body.portal-page:has(.php-form-section) > header nav a {
+    margin: 0;
+    padding: 9px 12px;
+    border-radius: 8px;
+    color: #52627a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+body.portal-page:has(.php-form-section) > header nav a:hover,
+body.portal-page:has(.php-form-section) > header nav a[aria-current="page"] {
+    color: var(--hub-accent);
+    background: #eef0ff;
+}
+
+.php-form-section {
+    flex: 1;
+    width: min(100%, 760px);
+    margin: 42px auto;
+    padding: 0 22px;
+}
+
+.php-form-card {
+    padding: clamp(25px, 5vw, 46px);
+    background: #fff;
+    border: 1px solid var(--hub-line);
+    border-radius: 18px;
+    box-shadow: 0 16px 44px rgba(23,43,77,.08);
+}
+
+.php-form-card > .eyebrow {
+    margin: 0 0 8px;
+    color: var(--hub-accent);
+    text-align: left;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: .12em;
+}
+
+.php-form-card h2 {
+    margin: 0 0 7px;
+    color: var(--hub-ink);
+    font: 700 clamp(25px, 4vw, 32px)/1.2 "Segoe UI", sans-serif;
+    letter-spacing: -.6px;
+    text-align: left;
+}
+
+.php-form-card > .form-intro {
+    margin: 0 0 24px;
+    color: var(--hub-muted);
+    text-align: left;
+}
+
+.form-intro span { color: var(--hub-accent); }
+.php-form-group { margin-top: 17px; }
+
+.php-form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--hub-ink);
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.php-form-group input,
+.php-form-group select,
+.php-form-group textarea {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid var(--hub-line);
+    border-radius: 9px;
+    background: #fff;
+    color: var(--hub-ink);
+    font: 15px/1.5 "Segoe UI", sans-serif;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.php-form-group textarea { resize: vertical; min-height: 112px; }
+.php-form-group input::placeholder,
+.php-form-group textarea::placeholder { color: #94a0b1; }
+
+.php-form-group input:focus,
+.php-form-group select:focus,
+.php-form-group textarea:focus {
+    outline: none;
+    border-color: var(--hub-accent);
+    box-shadow: 0 0 0 3px rgba(77,95,229,.14);
+}
+
+.php-form-card button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 13px 18px;
+    border: 0;
+    border-radius: 9px;
+    background: var(--hub-accent);
+    color: #fff;
+    font: 650 15px "Segoe UI", sans-serif;
+    cursor: pointer;
+}
+
+.php-form-card button:hover { background: #3e4fc7; }
+.php-form-card button:focus-visible { outline: 3px solid #9ca7ff; outline-offset: 3px; }
+
+.form-success,
+.form-errors {
+    margin: 18px 0;
+    padding: 14px 16px;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+.form-success { background: #edf8f1; color: #17663a; border: 1px solid #bde5ca; }
+.form-errors { background: #fff5f3; color: #8f3528; border: 1px solid #f1c9c2; }
+.form-errors ul { margin: 6px 0 0; padding-left: 20px; }
+
+body.portal-page:has(.php-form-section) > footer {
+    margin: 0;
+    padding: 18px 24px;
+    background: #fff;
+    color: var(--hub-muted);
+    border-top: 1px solid var(--hub-line);
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 620px) {
+    body.portal-page:has(.php-form-section) > header { padding: 13px 18px; gap: 12px; }
+    body.portal-page:has(.php-form-section) > header nav { gap: 0; }
+    body.portal-page:has(.php-form-section) > header nav a { padding: 8px; }
+    .php-form-section { margin: 24px auto; padding: 0 14px; }
+}

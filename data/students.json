@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "name": "Aarav Patel",
+        "email": "aarav.patel@university.com",
+        "course": "B.Tech",
+        "year": "3rd Year",
+        "department": "Computer Science"
+    },
+    {
+        "id": 2,
+        "name": "Diya Shah",
+        "email": "diya.shah@university.com",
+        "course": "BCA",
+        "year": "2nd Year",
+        "department": "Computer Applications"
+    },
+    {
+        "id": 3,
+        "name": "Rohan Mehta",
+        "email": "rohan.mehta@university.com",
+        "course": "B.Tech",
+        "year": "3rd Year",
+        "department": "Information Technology"
+    },
+    {
+        "id": 4,
+        "name": "Ananya Desai",
+        "email": "ananya.desai@university.com",
+        "course": "B.Tech",
+        "year": "2nd Year",
+        "department": "Computer Science"
+    },
+    {
+        "id": 5,
+        "name": "Vivaan Joshi",
+        "email": "vivaan.joshi@university.com",
+        "course": "BCA",
+        "year": "1st Year",
+        "department": "Computer Applications"
+    },
+    {
+        "id": 6,
+        "name": "Myra Patel",
+        "email": "myra.patel@university.com",
+        "course": "B.Sc",
+        "year": "3rd Year",
+        "department": "Information Technology"
+    },
+    {
+        "id": 7,
+        "name": "Arjun Shah",
+        "email": "arjun.shah@university.com",
+        "course": "B.Tech",
+        "year": "1st Year",
+        "department": "Computer Science"
+    },
+    {
+        "id": 8,
+        "name": "Ishita Mehta",
+        "email": "ishita.mehta@university.com",
+        "course": "BCA",
+        "year": "2nd Year",
+        "department": "Computer Applications"
+    },
+    {
+        "id": 9,
+        "name": "Kabir Desai",
+        "email": "kabir.desai@university.com",
+        "course": "B.Tech",
+        "year": "4th Year",
+        "department": "Information Technology"
+    },
+    {
+        "id": 10,
+        "name": "Sara Joshi",
+        "email": "sara.joshi@university.com",
+        "course": "B.Sc",
+        "year": "2nd Year",
+        "department": "Computer Science"
+    },
+    {
+        "id": 11,
+        "name": "Yash Patel",
+        "email": "yash.patel@university.com",
+        "course": "B.Tech",
+        "year": "3rd Year",
+        "department": "Computer Science"
+    },
+    {
+        "id": 12,
+        "name": "Kiara Shah",
+        "email": "kiara.shah@university.com",
+        "course": "BCA",
+        "year": "1st Year",
+        "department": "Computer Applications"
+    },
+    {
+        "id": 13,
+        "name": "Dev Mehta",
+        "email": "dev.mehta@university.com",
+        "course": "B.Tech",
+        "year": "4th Year",
+        "department": "Information Technology"
+    },
+    {
+        "id": 14,
+        "name": "Avni Desai",
+        "email": "avni.desai@university.com",
+        "course": "B.Sc",
+        "year": "2nd Year",
+        "department": "Computer Science"
+    },
+    {
+        "id": 15,
+        "name": "Reyansh Joshi",
+        "email": "reyansh.joshi@university.com",
+        "course": "B.Tech",
+        "year": "1st Year",
+        "department": "Information Technology"
+    }
+]

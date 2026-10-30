@@ -1,0 +1,14 @@
+# Local credentials and student data
+.env
+data/accounts.csv
+data/registrations.csv
+data/student_records.csv
+
+# Uploaded user-generated posters (keep upload protection rules)
+uploads/event-posters/*
+!uploads/event-posters/.htaccess
+
+# Local/editor and server output
+.DS_Store
+Thumbs.db
+*.log

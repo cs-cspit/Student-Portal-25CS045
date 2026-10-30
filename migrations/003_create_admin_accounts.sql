@@ -1,0 +1,11 @@
+USE studenthub;
+
+CREATE TABLE IF NOT EXISTS admins (
+  admin_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(254) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (admin_id),
+  UNIQUE KEY uq_admins_email (email)
+) ENGINE=InnoDB;

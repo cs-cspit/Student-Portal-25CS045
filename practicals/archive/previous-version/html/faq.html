@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub | FAQ</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="portal-page">
+
+    <!-- Header -->
+    <header>
+        <h1>StudentHub</h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+            <a href="php-registration.php">Register</a>
+        </nav>
+
+        <button id="themeButton" type="button">🌙</button>
+    </header>
+
+    <main>
+
+        <!-- FAQ Introduction -->
+        <section class="faq-section">
+
+            <p>HELP CENTER</p>
+            <h2>Frequently Asked Questions</h2>
+
+            <p>
+                Find answers to common questions about StudentHub,
+                your account, courses, and academic information.
+            </p>
+
+            <!-- Search -->
+            <div class="faq-controls">
+
+                <input
+                    type="search"
+                    id="faqSearch"
+                    placeholder="Search questions or answers..."
+                    aria-label="Search FAQs">
+
+                <!-- Category Filter -->
+                <select id="faqFilter" aria-label="Filter by category">
+                    <option value="all">All Categories</option>
+                </select>
+
+                <!-- Sorting -->
+                <select id="faqSort" aria-label="Sort FAQs">
+                    <option value="default">Default Order</option>
+                    <option value="az">Question: A to Z</option>
+                    <option value="za">Question: Z to A</option>
+                </select>
+
+            </div>
+
+            <!-- Loading and Error Messages -->
+            <p id="faqsStatus" class="data-status" role="status">
+                Loading FAQs...
+            </p>
+
+            <!-- Dynamic FAQ Records -->
+            <div id="faqsContainer" class="faq-list">
+            </div>
+
+            <!-- Pagination -->
+            <div
+                id="faqPagination"
+                class="pagination"
+                aria-label="FAQ pagination">
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>StudentHub © 2026</p>
+
+        <nav>
+            <a href="contact.html">Contact</a>
+            <a href="help.html">Help</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </nav>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/script.js"></script>
+    <script src="../js/practical6.js"></script>
+
+</body>
+</html>
+

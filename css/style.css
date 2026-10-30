@@ -1,0 +1,1357 @@
+/* =========================================
+   StudentHub - Main Stylesheet
+   Practicals 3, 4, 5 and 6
+========================================= */
+
+
+/* =========================================
+   1. Theme
+========================================= */
+
+:root {
+    --thistle: #aeb8ff;
+    --pastel-petal: #e9ecff;
+    --baby-pink: #dce4ff;
+    --icy-blue: #dce7ff;
+    --sky-blue: #9eafff;
+
+    --heading: #172b4d;
+    --text: #42526b;
+    --muted: #66758b;
+
+    --white: #ffffff;
+    --background: #f4f7fb;
+    --light-lavender: #eef1ff;
+    --border: #dce4ee;
+
+    --purple-button: #4d5fe5;
+    --purple-hover: #3e4fc7;
+
+    --success: #21865b;
+    --error: #c34464;
+}
+
+
+/* =========================================
+   2. Reset and Common Styles
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Baloo 2", sans-serif;
+    color: var(--heading);
+    font-weight: 600;
+}
+
+a {
+    color: #80669a;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* =========================================
+   3. Soft Background Decorations
+========================================= */
+
+.portal-page,
+body:has(.registration-page) {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.portal-page::before,
+.portal-page::after,
+body:has(.registration-page)::before,
+body:has(.registration-page)::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.portal-page::before,
+body:has(.registration-page)::before {
+    width: 320px;
+    height: 320px;
+    top: -100px;
+    right: -90px;
+    background: rgba(189, 224, 254, 0.55);
+}
+
+.portal-page::after,
+body:has(.registration-page)::after {
+    width: 280px;
+    height: 280px;
+    bottom: -100px;
+    left: -90px;
+    background: rgba(255, 200, 221, 0.45);
+}
+
+
+/* =========================================
+   4. Header
+========================================= */
+
+header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 5%;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 18px rgba(83, 65, 103, 0.05);
+}
+
+header h1 {
+    color: #59476a;
+    font-size: 30px;
+    margin-right: auto;
+}
+
+header p {
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+header a {
+    color: var(--heading);
+    text-decoration: none;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+header nav a {
+    padding: 8px 11px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+header nav a:hover {
+    color: #4d5fe5;
+    background: #eef0ff;
+}
+
+
+/* =========================================
+   5. Header Search
+========================================= */
+
+.portal-page header input {
+    width: 250px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    background: #fcfbfe;
+    color: var(--heading);
+}
+
+.portal-page header input:focus {
+    border-color: var(--thistle);
+    box-shadow: 0 0 0 3px rgba(205, 180, 219, 0.2);
+}
+
+
+/* =========================================
+   6. Main Layout
+========================================= */
+
+main {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+main > section {
+    background: var(--white);
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 35px rgba(83, 65, 103, 0.06);
+}
+
+main > section:first-child {
+    background: #eef2ff;
+}
+
+main h2 {
+    margin: 10px 0;
+    color: var(--heading);
+}
+
+main a {
+    color: #80669a;
+    margin-right: 15px;
+}
+
+
+/* =========================================
+   7. Buttons
+========================================= */
+
+button {
+    border: none;
+    border-radius: 9px;
+    padding: 10px 17px;
+    background: var(--purple-button);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background: var(--purple-hover);
+    transform: translateY(-1px);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(162, 210, 255, 0.7);
+    outline-offset: 2px;
+}
+
+
+/* =========================================
+   8. Practical 3 - CSS Grid
+========================================= */
+
+#features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feature-heading {
+    grid-column: 1 / -1;
+}
+
+#features article {
+    padding: 20px;
+    background: #f5f1f9;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+#features article h3 {
+    color: #80669a;
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   9. Practical 3 - Flexbox
+========================================= */
+
+.stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stats article {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    background: #eeeaff;
+    border-radius: 12px;
+}
+
+
+/* =========================================
+   10. Practical 4 - FAQ
+========================================= */
+
+.faq-list {
+    margin-top: 25px;
+}
+
+.faq-item {
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px 20px;
+    border: none;
+    background: var(--white);
+    color: var(--heading);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.faq-question:hover {
+    background: #faf7fc;
+}
+
+.faq-question span {
+    font-size: 22px;
+    color: #a88cbb;
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 20px 18px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+
+/* =========================================
+   11. Practical 4 - Modal
+========================================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(64, 51, 76, 0.45);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    padding: 35px;
+    background: var(--white);
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(64, 51, 76, 0.2);
+    animation: modalOpen 0.3s ease;
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: transparent;
+    color: var(--heading);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-button,
+.modal-link {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: var(--purple-button);
+    color: white;
+    text-decoration: none;
+}
+
+@keyframes modalOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================
+   12. Portal Pages
+========================================= */
+
+.portal-page main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px 30px;
+}
+
+.portal-page main > section {
+    width: 100%;
+    margin: 0;
+}
+
+.portal-page main > aside {
+    display: none;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(83, 65, 103, 0.08);
+}
+
+.portal-page main > aside.show {
+    display: block;
+}
+
+.portal-page aside h2 {
+    font-size: 15px;
+    color: #80669a;
+    margin: 8px 0 12px;
+}
+
+.portal-page aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+.portal-page aside a {
+    display: block;
+    padding: 8px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: var(--text);
+    margin: 0;
+}
+
+.portal-page aside a:hover {
+    background: #f3eff8;
+    color: #80669a;
+}
+
+
+/* =========================================
+   13. Practical 4 - Hamburger
+========================================= */
+
+.menu-button {
+    display: block;
+    width: 55px;
+    height: 45px;
+    margin-bottom: 15px;
+    background: var(--purple-button);
+    font-size: 22px;
+}
+
+.menu-button:hover {
+    background: var(--purple-hover);
+}
+
+
+/* =========================================
+   14. Practical 4 - Theme Button
+========================================= */
+
+.theme-button {
+    padding: 9px 14px;
+    background: #eeeaff;
+    color: var(--heading);
+}
+
+.theme-button:hover {
+    background: var(--thistle);
+    color: white;
+}
+
+
+/* =========================================
+   15. Practical 4 - Notification
+========================================= */
+
+.notification-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    background: #f8eefa;
+    color: #59476a;
+    border-left: 5px solid var(--thistle);
+    border-radius: 10px;
+    animation: bannerSlide 0.4s ease;
+}
+
+.notification-banner p {
+    margin: 0;
+    color: inherit;
+}
+
+.notification-banner button {
+    padding: 2px 8px;
+    background: transparent;
+    color: inherit;
+    font-size: 24px;
+}
+
+.notification-banner button:hover {
+    background: transparent;
+    transform: none;
+}
+
+.notification-banner.hide {
+    display: none;
+}
+
+@keyframes bannerSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   16. Practical 4 - Event Slider
+========================================= */
+
+.event-slider {
+    position: relative;
+    min-height: 330px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.event-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: 28px;
+    border-radius: 16px;
+    background: #eeeaff;
+    border: 1px solid #ddd3e8;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.event-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.event-slide p:first-child {
+    color: #80669a;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.event-slide h3 {
+    font-size: 25px;
+    color: var(--heading);
+    margin: 5px 0;
+}
+
+.event-slide a {
+    color: #80669a;
+}
+
+.event-slide.slide-next {
+    animation: slideFromRight 0.4s ease forwards;
+}
+
+.event-slide.slide-previous {
+    animation: slideFromLeft 0.4s ease forwards;
+}
+
+.slider-buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.slider-buttons button {
+    background: var(--purple-button);
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================
+   17. Practical 6 - Events
+========================================= */
+
+.event-controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    padding: 18px;
+    background: #eeeaff;
+    border: 1px solid #ddd3e8;
+    border-radius: 14px;
+}
+
+.event-controls div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.event-controls label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--heading);
+}
+
+.event-controls select {
+    min-width: 190px;
+    padding: 10px 12px;
+    border: 1px solid #d9d0e2;
+    border-radius: 9px;
+    background: white;
+    color: var(--heading);
+}
+
+.data-status {
+    margin: 12px 0 20px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.dynamic-event-card {
+    margin: 15px 0;
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--thistle);
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(70, 55, 85, 0.06);
+}
+
+.dynamic-event-card p:first-child {
+    color: #8a6d9d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.dynamic-event-card h4 {
+    margin: 8px 0;
+    color: var(--heading);
+    font-size: 19px;
+}
+
+.dynamic-event-card p {
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.pagination {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    min-width: 36px;
+    padding: 8px 12px;
+    border: 1px solid #d9d0e2;
+    background: white;
+    color: var(--heading);
+}
+
+.pagination button:hover,
+.pagination button.active {
+    background: var(--thistle);
+    border-color: var(--thistle);
+    color: white;
+}
+
+
+/* =========================================
+   18. Practical 5 - Registration
+========================================= */
+
+body:has(.registration-page) {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--background);
+    color: var(--heading);
+    position: relative;
+    overflow-x: hidden;
+}
+
+.registration-page {
+    position: relative;
+    z-index: 1;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 28px 24px 50px;
+}
+
+.registration-page::before {
+    content: "✦  StudentHub";
+    display: block;
+    margin: 0 0 28px 4px;
+    color: #59476a;
+    font-size: 25px;
+    font-weight: 750;
+    letter-spacing: -0.7px;
+}
+
+.registration-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 38px 44px;
+    background: white;
+    border: 1px solid #eee7f2;
+    border-radius: 22px;
+    box-shadow: 0 16px 50px rgba(83, 65, 103, 0.08);
+}
+
+.registration-card::before {
+    display: none;
+}
+
+.registration-card h1 {
+    color: var(--heading);
+    font-size: 31px;
+    line-height: 1.25;
+    margin: 0 0 8px;
+}
+
+.registration-card > p {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0 0 28px;
+}
+
+.registration-card form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 0;
+}
+
+.registration-card .form-group {
+    min-width: 0;
+    margin-bottom: 20px;
+}
+
+.registration-card .gender-group,
+.registration-card .terms-group,
+.registration-card .register-button,
+.registration-card #successMessage {
+    grid-column: 1 / -1;
+}
+
+.registration-card .form-group > label,
+.registration-card .form-group > legend {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--heading);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.registration-card .form-group input:not([type="radio"]):not([type="checkbox"]),
+.registration-card .form-group select {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 14px;
+    border: 1px solid #e5dceb;
+    border-radius: 10px;
+    background: #fcfbfe;
+    color: var(--heading);
+    outline: none;
+}
+
+.registration-card .form-group input::placeholder {
+    color: #a49baa;
+}
+
+.registration-card .form-group input:focus,
+.registration-card .form-group select:focus {
+    border-color: #b39ac5;
+    box-shadow: 0 0 0 3px rgba(205, 180, 219, 0.25);
+    background: white;
+}
+
+.registration-card .form-group .valid {
+    border-color: #58a985 !important;
+    background: #f5fcf8 !important;
+}
+
+.registration-card .form-group .invalid {
+    border-color: #dc718c !important;
+    background: #fff7f9 !important;
+}
+
+.error {
+    display: block;
+    margin-top: 6px;
+    color: var(--error);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.gender-group {
+    border: none;
+    padding: 0;
+}
+
+.registration-card .gender-group label,
+.registration-card .terms-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 18px 5px 0;
+    color: var(--text);
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.gender-group input,
+.terms-group input {
+    width: 16px;
+    height: 16px;
+    accent-color: #a88cbb;
+}
+
+.terms-group {
+    padding: 14px 16px;
+    background: #faf6fc;
+    border: 1px solid #eee4f3;
+    border-radius: 10px;
+}
+
+.strength-track {
+    height: 6px;
+    background: #eee8f2;
+    border-radius: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+#strengthBar {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.3s, background 0.3s;
+}
+
+#strengthText {
+    display: block;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.register-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+    background: var(--purple-button);
+    color: white;
+    font-weight: 650;
+}
+
+@media (max-width: 760px) {
+    header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 15px 5%;
+    }
+
+    header h1 { width: 100%; font-size: 25px; }
+    header nav { width: 100%; }
+    #features { grid-template-columns: 1fr; }
+    .stats { flex-wrap: wrap; }
+}
+
+.register-button:hover {
+    background: var(--purple-hover);
+}
+
+#successMessage {
+    color: var(--success);
+    text-align: center;
+    margin: 14px 0 0;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   19. Footer
+========================================= */
+
+footer {
+    position: relative;
+    z-index: 1;
+    background: #59476a;
+    color: white;
+    padding: 25px 5%;
+    margin-top: 30px;
+}
+
+footer a {
+    color: var(--icy-blue);
+}
+
+footer input {
+    padding: 8px;
+    width: 100%;
+}
+
+footer button {
+    margin-top: 8px;
+}
+
+
+/* =========================================
+   20. Dark Mode
+========================================= */
+
+body.dark-theme {
+    background: #25202b;
+    color: #e9e2ee;
+}
+
+body.dark-theme header {
+    background: #30283a;
+    border-color: #493e55;
+}
+
+body.dark-theme header h1,
+body.dark-theme header p {
+    color: #f2eaf6;
+}
+
+body.dark-theme main > section,
+body.dark-theme .portal-page main > aside {
+    background: #30283a;
+    border-color: #493e55;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4 {
+    color: #f4edf7;
+}
+
+body.dark-theme p {
+    color: #d4c9dc;
+}
+
+body.dark-theme .faq-item,
+body.dark-theme .faq-question {
+    background: #30283a;
+    border-color: #493e55;
+    color: #f4edf7;
+}
+
+body.dark-theme .faq-answer {
+    color: #d4c9dc;
+}
+
+body.dark-theme .modal-content {
+    background: #30283a;
+    color: #f4edf7;
+}
+
+body.dark-theme .modal-content p {
+    color: #d4c9dc;
+}
+
+body.dark-theme .event-slide {
+    background: #3a3145;
+    border-color: #54465f;
+}
+
+body.dark-theme .event-slide h3 {
+    color: #f4edf7;
+}
+
+body.dark-theme .dynamic-event-card {
+    background: #30283a;
+    border-color: #493e55;
+}
+
+body.dark-theme .dynamic-event-card h4 {
+    color: #f4edf7;
+}
+
+body.dark-theme .dynamic-event-card p {
+    color: #d4c9dc;
+}
+
+body.dark-theme .event-controls {
+    background: #3a3145;
+    border-color: #54465f;
+}
+
+body.dark-theme .event-controls label {
+    color: #f4edf7;
+}
+
+body.dark-theme .event-controls select,
+body.dark-theme .pagination button {
+    background: #30283a;
+    border-color: #54465f;
+    color: #f4edf7;
+}
+
+body.dark-theme .theme-button {
+    background: #493e55;
+    color: white;
+}
+
+body.dark-theme .notification-banner {
+    background: #3a3145;
+    color: #e9e2ee;
+    border-color: var(--thistle);
+}
+
+body.dark-theme .notification-banner p,
+body.dark-theme .notification-banner button {
+    color: #e9e2ee;
+}
+
+body.dark-theme .registration-card {
+    background: #30283a;
+    border-color: #493e55;
+}
+
+body.dark-theme .registration-card h1,
+body.dark-theme .registration-card .form-group > label,
+body.dark-theme .registration-card .form-group > legend {
+    color: #f4edf7;
+}
+
+body.dark-theme .registration-card > p,
+body.dark-theme .registration-card .gender-group label,
+body.dark-theme .registration-card .terms-group label {
+    color: #d4c9dc;
+}
+
+body.dark-theme .registration-card .form-group input,
+body.dark-theme .registration-card .form-group select {
+    background: #3a3145;
+    border-color: #54465f;
+    color: #f4edf7;
+}
+
+body.dark-theme .terms-group {
+    background: #3a3145;
+    border-color: #54465f;
+}
+
+
+/* =========================================
+   21. Responsive Design
+========================================= */
+
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    header h1 {
+        margin-right: 0;
+    }
+
+    header p {
+        white-space: normal;
+    }
+
+    .portal-page header input {
+        width: 100%;
+    }
+
+    main {
+        padding: 20px 14px;
+    }
+
+    main > section {
+        padding: 22px;
+    }
+
+    #features {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        flex-direction: column;
+    }
+
+    .portal-page main {
+        padding: 0 14px 25px;
+    }
+
+    .portal-page main > aside.show {
+        padding: 25px;
+        border-radius: 16px;
+    }
+
+    .portal-page main > aside.show nav {
+        flex-direction: column;
+    }
+
+    .portal-page main > aside.show a {
+        width: 100%;
+        padding: 10px 12px;
+        margin: 3px 0;
+    }
+
+    .event-controls {
+        flex-direction: column;
+    }
+
+    .event-controls select {
+        width: 100%;
+    }
+
+    .dynamic-event-card {
+        padding: 16px;
+    }
+
+    .event-slider {
+        min-height: 360px;
+    }
+
+    .registration-page {
+        padding: 22px 14px 35px;
+    }
+
+    .registration-page::before {
+        font-size: 23px;
+        margin-bottom: 22px;
+    }
+
+    .registration-card {
+        padding: 28px 24px;
+    }
+
+    .registration-card form {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-card .form-group,
+    .registration-card .gender-group,
+    .registration-card .terms-group,
+    .registration-card .register-button,
+    .registration-card #successMessage {
+        grid-column: 1;
+    }
+
+    .registration-card h1 {
+        font-size: 27px;
+    }
+}
+
+
+@media (max-width: 420px) {
+
+    .registration-card {
+        padding: 22px 17px;
+        border-radius: 16px;
+    }
+
+    .registration-card h1 {
+        font-size: 24px;
+    }
+
+    .event-slide {
+        padding: 22px;
+    }
+}
+
+/* Registration Page Alignment */
+
+.registration-card {
+    text-align: center;
+}
+
+.registration-card form {
+    text-align: center;
+}
+
+.registration-card .form-group > label,
+.registration-card .form-group > legend {
+    text-align: center;
+}
+
+.registration-card .gender-group {
+    text-align: center;
+}
+
+.registration-card .terms-group {
+    text-align: center;
+}
+
+.registration-card .terms-group label {
+    justify-content: center;
+}
+
+/* Events Pagination and Button Alignment */
+
+.portal-page .pagination {
+    justify-content: center;
+}
+
+.portal-page main > section > button {
+    display: block;
+    margin: 20px auto 0;
+}
+
+/* =================================
+   Practical 6: Student Records
+================================= */
+
+.student-data-section {
+    text-align: center;
+}
+
+#studentsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.dynamic-student-card {
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 5px 18px rgba(70, 55, 85, 0.06);
+}
+
+.dynamic-student-card h4 {
+    margin-bottom: 10px;
+    color: var(--heading);
+    font-size: 18px;
+}
+
+.dynamic-student-card p {
+    margin: 5px 0;
+    color: var(--text);
+    font-size: 14px;
+}
+
+@media (max-width: 800px) {
+
+    #studentsContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+
+    #studentsContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Fix FAQ input text color */
+.faq-controls input,
+.faq-controls select {
+    color: #40334c !important;
+    background-color: #ffffff;
+}
+
+.faq-controls input::placeholder {
+    color: #898192;
+    opacity: 1;
+}
+
+body.dark-theme .faq-controls input,
+body.dark-theme .faq-controls select {
+    color: #f5edff !important;
+    background-color: #302737;
+}
+
+body.dark-theme .faq-controls input::placeholder {
+    color: #c9bdd5;
+}

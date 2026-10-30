@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "question": "What is StudentHub?",
+        "answer": "StudentHub is a centralized student portal for managing courses, attendance, assignments, results, events, and university notices.",
+        "category": "General"
+    },
+    {
+        "id": 2,
+        "question": "How do I create an account?",
+        "answer": "Select Register and complete the registration form using your university information.",
+        "category": "Account"
+    },
+    {
+        "id": 3,
+        "question": "How do I reset my password?",
+        "answer": "Select Forgot Password on the Login page and follow the instructions to reset your password.",
+        "category": "Account"
+    },
+    {
+        "id": 4,
+        "question": "Where can I check my attendance?",
+        "answer": "Open the Attendance section in the student portal to view your attendance records.",
+        "category": "Academics"
+    },
+    {
+        "id": 5,
+        "question": "Where can I view my academic results?",
+        "answer": "Open the Results section to view your grades and academic performance.",
+        "category": "Academics"
+    },
+    {
+        "id": 6,
+        "question": "How do I contact StudentHub support?",
+        "answer": "Visit the Contact page or use the Help section inside the student portal.",
+        "category": "Support"
+    },
+    {
+        "id": 7,
+        "question": "How can I view my timetable?",
+        "answer": "Open the Timetable section to check your daily class schedule.",
+        "category": "Academics"
+    },
+    {
+        "id": 8,
+        "question": "Where can I find assignments?",
+        "answer": "Visit the Assignments section to view available assignments and their deadlines.",
+        "category": "Academics"
+    },
+    {
+        "id": 9,
+        "question": "How do I update my profile?",
+        "answer": "Open your profile settings and update the information that can be edited.",
+        "category": "Account"
+    },
+    {
+        "id": 10,
+        "question": "How can I find college events?",
+        "answer": "Visit the Events page to explore upcoming workshops, competitions, and campus activities.",
+        "category": "Events"
+    },
+    {
+        "id": 11,
+        "question": "Can I change my account password?",
+        "answer": "Use the password settings or password recovery option available on the Login page.",
+        "category": "Account"
+    },
+    {
+        "id": 12,
+        "question": "Where can I find university notices?",
+        "answer": "Check the Notices section of the student portal for important announcements.",
+        "category": "General"
+    },
+    {
+        "id": 13,
+        "question": "What should I do if a page does not load?",
+        "answer": "Refresh the page and check your internet connection. Contact support if the issue continues.",
+        "category": "Support"
+    },
+    {
+        "id": 14,
+        "question": "How can I participate in college events?",
+        "answer": "Check the Events page for event details, eligibility, and registration instructions.",
+        "category": "Events"
+    },
+    {
+        "id": 15,
+        "question": "Where can I get technical help?",
+        "answer": "Visit the Help or Contact page to find assistance with technical issues.",
+        "category": "Support"
+    }
+]

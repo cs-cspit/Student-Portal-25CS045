@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | StudentHub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main class="registration-page">
+        <section class="registration-card">
+            <h1>Student Registration</h1>
+            <p>Create your StudentHub account</p>
+
+            <form id="registrationForm" novalidate>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="Enter your full name"
+                           autocomplete="name" required>
+                    <small class="error" id="nameError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="student@example.com"
+                           autocomplete="email" required>
+                    <small class="error" id="emailError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" name="mobile"
+                           placeholder="10-digit mobile number"
+                           inputmode="numeric" maxlength="10"
+                           autocomplete="tel" required>
+                    <small class="error" id="mobileError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="Create a password"
+                           autocomplete="new-password" required>
+
+                    <div class="strength-track">
+                        <div id="strengthBar"></div>
+                    </div>
+                    <small id="strengthText">Password strength: Not entered</small>
+                    <small class="error" id="passwordError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword"
+                           name="confirmPassword"
+                           placeholder="Re-enter your password"
+                           autocomplete="new-password" required>
+                    <small class="error" id="confirmPasswordError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <select id="course" name="course" required>
+                        <option value="">Select your course</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BSc Computer Science">BSc Computer Science</option>
+                        <option value="BTech">B.Tech</option>
+                        <option value="MCA">MCA</option>
+                    </select>
+                    <small class="error" id="courseError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year of Study</label>
+                    <select id="year" name="year" required>
+                        <option value="">Select your year</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                    </select>
+                    <small class="error" id="yearError"></small>
+                </div>
+
+                <fieldset class="form-group gender-group">
+                    <legend>Gender</legend>
+
+                    <label>
+                        <input type="radio" name="gender" value="Female">
+                        Female
+                    </label>
+
+                    <label>
+                        <input type="radio" name="gender" value="Male">
+                        Male
+                    </label>
+
+                    <label>
+                        <input type="radio" name="gender" value="Other">
+                        Other
+                    </label>
+
+                    <small class="error" id="genderError"></small>
+                </fieldset>
+
+                <div class="form-group terms-group">
+                    <label>
+                        <input type="checkbox" id="terms" name="terms">
+                        I accept the Terms and Conditions
+                    </label>
+                    <small class="error" id="termsError"></small>
+                </div>
+
+                <button type="submit" class="register-button">
+                    Create Account
+                </button>
+
+                <p id="successMessage" role="status" aria-live="polite"></p>
+
+            </form>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+

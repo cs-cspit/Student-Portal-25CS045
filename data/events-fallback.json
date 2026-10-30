@@ -1,0 +1,54 @@
+[
+  {
+    "event_id": 1,
+    "title": "Designing for the Web",
+    "category": "Workshop",
+    "description": "A practical session on accessible layouts, visual hierarchy, and responsive interface design.",
+    "event_date": "2026-11-05",
+    "start_time": "10:00:00",
+    "location": "Design Studio",
+    "capacity": 80,
+    "registrations": 1,
+    "is_registered": false,
+    "status": "open"
+  },
+  {
+    "event_id": 2,
+    "title": "Student Research Colloquium",
+    "category": "Research",
+    "description": "Short talks and poster presentations from student research groups across the campus.",
+    "event_date": "2026-11-12",
+    "start_time": "14:00:00",
+    "location": "Central Seminar Hall",
+    "capacity": 120,
+    "registrations": 1,
+    "is_registered": false,
+    "status": "open"
+  },
+  {
+    "event_id": 3,
+    "title": "Careers in Software Engineering",
+    "category": "Career",
+    "description": "A career conversation about internships, technical interviews, and early-career development.",
+    "event_date": "2026-11-18",
+    "start_time": "11:00:00",
+    "location": "Auditorium 2",
+    "capacity": 150,
+    "registrations": 0,
+    "is_registered": false,
+    "status": "open"
+  },
+  {
+    "event_id": 4,
+    "title": "Student Project Showcase",
+    "category": "Campus",
+    "description": "Explore semester projects and meet the student teams building them.",
+    "event_date": "2026-11-26",
+    "start_time": "13:00:00",
+    "location": "Innovation Centre",
+    "capacity": 200,
+    "registrations": 0,
+    "is_registered": false,
+    "status": "open"
+  }
+]

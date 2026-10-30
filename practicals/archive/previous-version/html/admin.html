@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudentHub | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="portal-page dashboard-page">
+
+    <!-- Header -->
+    <header class="portal-header">
+        <div class="header-brand">
+            <h1>✦ StudentHub</h1>
+        </div>
+
+        <div class="header-search">
+            <input
+                type="search"
+                id="studentSearch"
+                placeholder="Search students by name, email, course..."
+                aria-label="Search students"
+            >
+        </div>
+
+        <div class="header-profile">
+            <p>Administrator</p>
+            <p>Student Management</p>
+        </div>
+
+        <button id="themeButton" type="button" aria-label="Toggle theme">
+            🌙
+        </button>
+    </header>
+
+    <!-- Main Layout -->
+    <main class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <h3>Admin Panel</h3>
+
+            <nav>
+                <a href="admin.html" aria-current="page">👥 Student Records</a>
+                <a href="events.html">📅 Events</a>
+                <a href="faq.html">❓ FAQs</a>
+                <a href="dashboard.html">🎓 Student Dashboard</a>
+                <a href="../index.html">🏠 Home</a>
+            </nav>
+        </aside>
+
+        <!-- Admin Content -->
+        <div class="dashboard-content">
+
+            <section class="dashboard-welcome">
+                <h2>Student Management</h2>
+                <p>View and search student records stored in JSON.</p>
+            </section>
+
+            <!-- Student Records -->
+            <section class="dashboard-panel student-data-section">
+
+                <h3>All Student Records</h3>
+
+                <p>
+                    Student information is loaded dynamically using
+                    the JavaScript Fetch API.
+                </p>
+
+                <p
+                    id="studentsStatus"
+                    class="data-status"
+                    role="status"
+                    aria-live="polite"
+                >
+                    Loading students...
+                </p>
+
+                <div id="studentsContainer">
+                    <!-- Student records are rendered here -->
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 StudentHub | Admin Dashboard</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/script.js"></script>
+    <script src="../js/practical6.js"></script>
+
+</body>
+</html>
+

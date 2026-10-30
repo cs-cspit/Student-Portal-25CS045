@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub | Feedback</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>StudentHub</h1>
+        <input type="search" placeholder="Search...">
+        <p>Computer Science • 25CSxxx</p>
+        <p>Prachi Modi</p>
+    </header>
+
+
+    <main>
+
+        <aside>
+            <h2>MAIN MENU</h2>
+
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="profile.html">Profile</a>
+                <a href="courses.html">Courses</a>
+                <a href="attendance.html">Attendance</a>
+                <a href="assignments.html">Assignments</a>
+            </nav>
+
+            <h2>ACADEMIC TOOLS</h2>
+
+            <nav>
+                <a href="results.html">Results</a>
+                <a href="timetable.html">Timetable</a>
+                <a href="events.html">Events</a>
+                <a href="notices.html">Notices</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="help.html">Help</a>
+            </nav>
+
+            <a href="settings.html">Settings</a>
+            <a href="login.html">Logout</a>
+        </aside>
+
+
+        <section>
+
+            <h2>Feedback</h2>
+            <p>Share your experience and help us improve StudentHub.</p>
+
+
+            <form>
+
+                <label for="category">Feedback Category</label>
+
+                <select id="category" name="category">
+                    <option value="course">Course</option>
+                    <option value="portal">Student Portal</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="other">Other</option>
+                </select>
+
+
+                <label for="rating">Overall Rating</label>
+
+                <select id="rating" name="rating">
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Average</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Very Poor</option>
+                </select>
+
+
+                <label for="message">Your Feedback</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    placeholder="Write your feedback here..."></textarea>
+
+
+                <label>
+                    <input type="checkbox" name="anonymous">
+                    Submit feedback anonymously
+                </label>
+
+
+                <button type="submit">Submit Feedback</button>
+
+            </form>
+
+
+            <section>
+                <h3>Recent Feedback</h3>
+
+                <article>
+                    <p>Course Feedback</p>
+                    <p>Thank you for helping us improve your learning experience.</p>
+                </article>
+
+                <article>
+                    <p>Portal Feedback</p>
+                    <p>Your feedback has been received and reviewed.</p>
+                </article>
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 StudentHub. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

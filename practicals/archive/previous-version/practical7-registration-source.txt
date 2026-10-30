@@ -1,0 +1,209 @@
+<?php
+$errors = [];
+$success = "";
+
+$name = "";
+$email = "";
+$mobile = "";
+$course = "";
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Collect raw values for validation and safe repopulation.
+    $name = trim($_POST["name"] ?? "");
+    $email = trim($_POST["email"] ?? "");
+    $mobile = trim($_POST["mobile"] ?? "");
+    $course = trim($_POST["course"] ?? "");
+    $message = trim($_POST["message"] ?? "");
+
+    // Validation
+    if ($name === "") {
+        $errors[] = "Name is required.";
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Enter a valid email address.";
+    }
+
+    if (!preg_match("/^[0-9]{10}$/", $mobile)) {
+        $errors[] = "Enter a valid 10-digit mobile number.";
+    }
+
+    if (!in_array($course, ["B.Tech", "BCA", "B.Sc", "MCA"], true)) {
+        $errors[] = "Please select a course.";
+    }
+
+    if ($message === "") {
+        $errors[] = "Please enter your message.";
+    }
+
+    // Store valid data in CSV
+    if (empty($errors)) {
+
+        $dataDirectory = __DIR__ . "/../data";
+        $csvFile = $dataDirectory . "/registrations.csv";
+
+
+        if (!is_dir($dataDirectory)) {
+            mkdir($dataDirectory, 0755, true);
+        }
+
+        $file = fopen($csvFile, "c+");
+
+        if ($file !== false) {
+            if (flock($file, LOCK_EX)) {
+                fseek($file, 0, SEEK_END);
+                if (ftell($file) === 0) {
+                    fputcsv($file, [
+                        "Name",
+                        "Email",
+                        "Mobile",
+                        "Course",
+                        "Message"
+                    ]);
+                }
+
+                fputcsv($file, [
+                    $name,
+                    $email,
+                    $mobile,
+                    $course,
+                    $message
+                ]);
+
+                fflush($file);
+                flock($file, LOCK_UN);
+                $success = "Registration submitted successfully!";
+                $name = $email = $mobile = $course = $message = "";
+
+            } else {
+                $errors[] = "Unable to save data. Please try again.";
+            }
+
+            fclose($file);
+
+        } else {
+            $errors[] = "Unable to open the CSV file for writing.";
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub | PHP Registration</title>
+    <link rel="stylesheet" href="../css/php-form.css">
+</head>
+
+<body class="portal-page">
+
+    <header>
+        <h1>StudentHub</h1>
+        <nav>
+            <a href="../index.html">Dashboard</a>
+            <a href="php-registration.php" aria-current="page">Register</a>
+        </nav>
+    </header>
+
+    <main class="php-form-section">
+        <section class="php-form-card">
+
+            <p class="eyebrow">STUDENT SERVICES</p>
+            <h2>Registration Form</h2>
+            <p class="form-intro">Enter your details to submit your registration. All fields are required.</p>
+
+            <?php if (!empty($success)): ?>
+                <div class="form-success" role="status">
+                    <?= htmlspecialchars($success, ENT_QUOTES, "UTF-8") ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($errors)): ?>
+                <div class="form-errors" role="alert">
+                    <strong>Please correct the following errors:</strong>
+                    <ul>
+                        <?php foreach ($errors as $error): ?>
+                            <li><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+
+            <form method="POST" action="php-registration.php">
+
+                <div class="php-form-group">
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        autocomplete="name"
+                        placeholder="e.g. Aanya Patel"
+                        value="<?= htmlspecialchars($name, ENT_QUOTES, "UTF-8") ?>"
+                        required>
+                </div>
+
+                <div class="php-form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        autocomplete="email"
+                        placeholder="you@example.com"
+                        value="<?= htmlspecialchars($email, ENT_QUOTES, "UTF-8") ?>"
+                        required>
+                </div>
+
+                <div class="php-form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input
+                        type="tel"
+                        id="mobile"
+                        name="mobile"
+                        inputmode="numeric"
+                        autocomplete="tel"
+                        placeholder="10-digit mobile number"
+                        maxlength="10"
+                        value="<?= htmlspecialchars($mobile, ENT_QUOTES, "UTF-8") ?>"
+                        required>
+                </div>
+
+                <div class="php-form-group">
+                    <label for="course">Course</label>
+                    <select id="course" name="course" required>
+                        <option value="">Choose a course</option>
+                        <option value="B.Tech" <?= $course === "B.Tech" ? "selected" : "" ?>>B.Tech</option>
+                        <option value="BCA" <?= $course === "BCA" ? "selected" : "" ?>>BCA</option>
+                        <option value="B.Sc" <?= $course === "B.Sc" ? "selected" : "" ?>>B.Sc</option>
+                        <option value="MCA" <?= $course === "MCA" ? "selected" : "" ?>>MCA</option>
+                    </select>
+                </div>
+
+                <div class="php-form-group">
+                    <label for="message">Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        placeholder="Anything you would like us to know?"
+                        required><?= htmlspecialchars($message, ENT_QUOTES, "UTF-8") ?></textarea>
+                </div>
+
+                <button type="submit">Submit registration <span aria-hidden="true">→</span></button>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>StudentHub <span aria-hidden="true">·</span> Student services</p>
+    </footer>
+
+</body>
+</html>
+

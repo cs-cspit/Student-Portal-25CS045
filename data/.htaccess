@@ -1,0 +1,3 @@
+<FilesMatch "^(accounts|registrations|student_records)\.csv$">
+    Require all denied
+</FilesMatch>
