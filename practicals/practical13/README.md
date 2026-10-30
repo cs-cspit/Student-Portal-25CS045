@@ -1,6 +1,6 @@
 # Practical 13 — Fetch API Event CRUD
 
-Practical 13 is integrated into the Admin **Events** tab at `admin_events.php`. Its `script.js` uses Fetch to create, list, update, and cancel records in StudentHub's existing `events` table without a full page reload. The API is `practicals/practical13/api.php`; it requires an Admin session and CSRF token. Poster uploads use the same server-side type and size validation as the event manager.
+Practical 13 is integrated into the Admin **Events** tab at `admin/admin_events.php` and the public/student API at `api/events_api.php`. Its client scripts use Fetch API to create, list, update, and cancel records in StudentHub's existing `events` table without a full page reload. The API requires an Admin session and CSRF token for mutations. Poster uploads use the same server-side type and size validation as the event manager.
 
 The `index.html` entry redirects to the integrated Events tab. A new install should use `database/studenthub.sql`; this practical's `schema.sql` documents the shared events table. For an existing database without `poster_path`, run `migrations/005_add_event_posters.sql` once.
 

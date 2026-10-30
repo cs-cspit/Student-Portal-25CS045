@@ -12,3 +12,7 @@ uploads/event-posters/*
 .DS_Store
 Thumbs.db
 *.log
+.idea/
+.vscode/
+*.tmp
+test_*.php

@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1793355752,
+        "title": "University examination Hall Ticket is out",
+        "category": "General",
+        "author": "Principal, charusat",
+        "date": "2026-10-30",
+        "content": "Dear students, University examination hall ticket is out now on egovernance charusat portal. The timetable and seating arrangements will be circulated shortly by your respective department."
+    },
+    {
+        "id": 2,
+        "title": "Extended Reading Hall Hours for Assessment Period",
+        "category": "Library",
+        "author": "University Library Services",
+        "date": "2026-10-26",
+        "content": "The central university library reading rooms will remain open until 10:00 PM on all weekdays."
+    },
+    {
+        "id": 3,
+        "title": "Faculty Advisory Slots Open for Capstone Approvals",
+        "category": "Department",
+        "author": "Department of Computer Science",
+        "date": "2026-10-24",
+        "content": "All Semester 4 and Semester 6 students preparing capstone proposals must meet with their faculty advisor."
+    }
+]

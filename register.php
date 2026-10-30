@@ -1,7 +1,8 @@
 <?php
 declare(strict_types=1);
-require __DIR__ . '/includes/auth.php';
-require __DIR__ . '/db.php';
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/helpers.php';
+require_once __DIR__ . '/db.php';
 
 app_no_cache_headers();
 if (!empty($_SESSION['student'])) {
@@ -174,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!$errors) {
-        $_SESSION['registration_notice'] = 'Your StudentHub account has been created. Log in with your student ID or email and password.';
+        $_SESSION['login_notice'] = 'Your StudentHub account has been created successfully. Sign in to access your portal.';
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         header('Location: login.php?registered=1', true, 303);
         exit;
@@ -187,33 +188,174 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Create account · StudentHub</title>
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/auth.css">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('studenthub_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
 </head>
 <body class="auth-page">
-  <header class="auth-header"><a class="auth-brand" href="index.php"><span class="brand-mark">S</span><span>StudentHub<small>STUDENT PORTAL</small></span></a><p>Already registered? <a href="login.php">Log in</a></p></header>
+  <header class="auth-header">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a class="auth-brand" href="index.php" aria-label="StudentHub home">
+        <span class="brand-mark">S</span>
+        <div>
+          <span>StudentHub</span>
+          <small>STUDENT PORTAL</small>
+        </div>
+      </a>
+      <div class="charusat-topbar-brand" style="margin-left:14px;" title="Charotar University of Science and Technology (CHARUSAT)">
+        <img src="images/charusat-logo.png" alt="CHARUSAT University Logo" class="charusat-logo-img">
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <button id="themeToggleBtn" class="btn-icon-toggle" type="button" aria-label="Toggle dark mode" style="width:36px;height:36px;border-radius:8px;background:var(--background);border:1px solid var(--border);color:var(--text);cursor:pointer;display:grid;place-items:center;">
+        <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="theme-icon-moon" style="display:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <p style="margin:0;font-size:13px;color:var(--text-muted)">Already registered? <a href="login.php" style="color:var(--primary);font-weight:600">Log in</a></p>
+    </div>
+  </header>
+
   <main class="auth-main auth-main-wide">
-    <section class="auth-intro"><p class="auth-eyebrow">STUDENT ACCOUNT</p><h1>Create your account</h1><p>Register with your student details to access your academic workspace.</p><div class="auth-step"><span>01</span><div><strong>Your student identity</strong><small>Use the details associated with your college.</small></div></div><div class="auth-step"><span>02</span><div><strong>Secure sign-in</strong><small>After registration, log in using your student ID or email.</small></div></div></section>
+    <section class="auth-intro">
+      <p class="auth-eyebrow">Student registration</p>
+      <h1>Create your account</h1>
+      <p>Register with your university student details to access enrolled courses, schedules, assignments, and campus events.</p>
+      
+      <div class="login-points" style="margin-top:24px;">
+        <span>Dual database and CSV storage for compatibility</span>
+        <span>Secure one-way password hashing (BCRYPT)</span>
+        <span>Instant redirection to single sign-in</span>
+      </div>
+    </section>
+
     <section class="auth-card">
-      <div class="auth-card-heading"><h2>Registration details</h2><p>All fields are required.</p></div>
-      <?php if ($errors): ?><div class="form-alert form-alert-error" role="alert"><strong>Please review the following:</strong><ul><?php foreach ($errors as $error): ?><li><?= app_escape($error) ?></li><?php endforeach; ?></ul></div><?php endif; ?>
+      <div class="auth-card-heading">
+        <h2>Registration details</h2>
+        <p>All fields are required for student verification.</p>
+      </div>
+
+      <?php if ($errors): ?>
+        <div class="form-alert form-alert-error" role="alert">
+          <strong>Please review the following:</strong>
+          <ul>
+            <?php foreach ($errors as $error): ?>
+              <li><?= app_escape($error) ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      <?php endif; ?>
+
       <form method="post" action="register.php" autocomplete="on">
         <input type="hidden" name="csrf_token" value="<?= app_escape(app_csrf_token()) ?>">
+
         <div class="form-grid">
-          <div class="field"><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" maxlength="100" value="<?= app_escape($values['name']) ?>" required></div>
-          <div class="field"><label for="age">Age</label><input id="age" name="age" type="number" min="15" max="100" inputmode="numeric" value="<?= app_escape($values['age']) ?>" required></div>
-          <div class="field"><label for="student_id">Student ID</label><input id="student_id" name="student_id" type="text" autocomplete="off" maxlength="30" value="<?= app_escape($values['student_id']) ?>" required></div>
-          <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="20" value="<?= app_escape($values['phone']) ?>" required></div>
-          <div class="field field-full"><label for="email">College email ID</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" value="<?= app_escape($values['email']) ?>" aria-describedby="email-note" required><small class="field-note" id="email-note">If you have not received your college email yet, enter the personal email address registered with your college.</small></div>
-          <fieldset class="field"><legend>Gender</legend><select id="gender" name="gender" required><option value="">Select an option</option><?php foreach ($genders as $gender): ?><option value="<?= app_escape($gender) ?>" <?= $values['gender'] === $gender ? 'selected' : '' ?>><?= app_escape($gender) ?></option><?php endforeach; ?></select></fieldset>
-          <div class="field"><label for="course">Enrolled course</label><select id="course" name="course" required><option value="">Select your course</option><?php foreach ($courses as $course): ?><option value="<?= app_escape($course) ?>" <?= $values['course'] === $course ? 'selected' : '' ?>><?= app_escape($course) ?></option><?php endforeach; ?></select></div>
-          <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required><small class="field-note">Use at least 8 characters.</small></div>
-          <div class="field"><label for="confirm_password">Confirm password</label><input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" minlength="8" required></div>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" autocomplete="name" maxlength="100" value="<?= app_escape($values['name']) ?>" placeholder="Full legal name" required>
+          </div>
+
+          <div class="field">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" min="15" max="100" inputmode="numeric" value="<?= app_escape($values['age']) ?>" placeholder="Age (15–100)" required>
+          </div>
+
+          <div class="field">
+            <label for="student_id">Student ID</label>
+            <input id="student_id" name="student_id" type="text" autocomplete="off" maxlength="30" value="<?= app_escape($values['student_id']) ?>" placeholder="e.g. 25CS045" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Mobile phone number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="20" value="<?= app_escape($values['phone']) ?>" placeholder="10-digit mobile" required>
+          </div>
+
+          <div class="field field-full">
+            <label for="email">College or registered email ID</label>
+            <input id="email" name="email" type="email" autocomplete="email" maxlength="254" value="<?= app_escape($values['email']) ?>" placeholder="student@example.edu" aria-describedby="email-note" required>
+            <small class="field-note" id="email-note">Enter your verified college email address or personal email on college record.</small>
+          </div>
+
+          <div class="field">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option value="">Select an option</option>
+              <?php foreach ($genders as $gender): ?>
+                <option value="<?= app_escape($gender) ?>" <?= $values['gender'] === $gender ? 'selected' : '' ?>><?= app_escape($gender) ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="course">Enrolled course</label>
+            <select id="course" name="course" required>
+              <option value="">Select your course</option>
+              <?php foreach ($courses as $course): ?>
+                <option value="<?= app_escape($course) ?>" <?= $values['course'] === $course ? 'selected' : '' ?>><?= app_escape($course) ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required>
+          </div>
+
+          <div class="field">
+            <label for="confirm_password">Confirm password</label>
+            <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" minlength="8" placeholder="Re-enter password" required>
+          </div>
         </div>
-        <button class="auth-submit" type="submit">Create account <span aria-hidden="true">→</span></button>
+
+        <button class="auth-submit" type="submit">
+          <span>Complete student registration</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
       </form>
-      <p class="auth-switch">Already have an account? <a href="login.php">Log in</a></p>
+
+      <p class="auth-switch">Already registered? <a href="login.php">Sign in to your account</a></p>
     </section>
   </main>
-  <footer class="auth-footer">StudentHub · Student account access</footer>
+
+  <footer class="auth-footer">
+    StudentHub · Secure Student Registration · Role Protected
+  </footer>
+
+  <script>
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const sunIcon = document.querySelector('.theme-icon-sun');
+    const moonIcon = document.querySelector('.theme-icon-moon');
+
+    function updateThemeUI(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      if (t === 'dark') {
+        document.documentElement.classList.add('dark');
+        if (sunIcon) sunIcon.style.display = 'none';
+        if (moonIcon) moonIcon.style.display = 'block';
+      } else {
+        document.documentElement.classList.remove('dark');
+        if (sunIcon) sunIcon.style.display = 'block';
+        if (moonIcon) moonIcon.style.display = 'none';
+      }
+    }
+
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateThemeUI(currentTheme);
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('studenthub_theme', next);
+        updateThemeUI(next);
+      });
+    }
+  </script>
 </body>
 </html>

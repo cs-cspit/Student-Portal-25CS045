@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+require_once __DIR__ . '/helpers.php';
 
 const APP_SESSION_TIMEOUT = 900;
 
@@ -36,14 +37,14 @@ function app_require_login(): void
 {
     app_no_cache_headers();
     if (empty($_SESSION['student']) || !is_array($_SESSION['student'])) {
-        header('Location: login.php', true, 303);
+        header('Location: ' . app_base_url() . 'login.php', true, 303);
         exit;
     }
 
     $lastActivity = (int)($_SESSION['last_activity'] ?? 0);
     if ($lastActivity === 0 || time() - $lastActivity > APP_SESSION_TIMEOUT) {
         app_destroy_session();
-        header('Location: timeout.php?expired=1', true, 303);
+        header('Location: ' . app_base_url() . 'pages/timeout.php?expired=1', true, 303);
         exit;
     }
     $_SESSION['last_activity'] = time();
@@ -54,14 +55,15 @@ function app_require_role(string $role): void
     app_require_login();
     if (($_SESSION['student']['role'] ?? 'Student') !== $role) {
         http_response_code(403);
-        require __DIR__ . '/../unauthorized.php';
+        require dirname(__DIR__) . '/pages/unauthorized.php';
         exit;
     }
 }
 
 function app_dashboard_url(string $role): string
 {
-    return $role === 'Admin' ? 'admin_dashboard.php' : 'student_dashboard.php';
+    $base = app_base_url();
+    return $role === 'Admin' ? $base . 'admin/admin_dashboard.php' : $base . 'student/student_dashboard.php';
 }
 
 function app_destroy_session(): void

@@ -1,6 +1,6 @@
 # Practical 11 — Student Management CRUD
 
-`student_management.php` is an Admin-only student record module. It uses prepared MySQLi statements to list, add, edit, search, filter by course, export the current result set as CSV, and soft-delete records by setting `status` to `inactive`.
+The student management module is located at `admin/student_management.php` (Admin-only). It uses prepared MySQLi statements to list, add, edit, search, filter by course, export the current result set as CSV, and soft-delete records by setting `status` to `inactive`.
 
 ## Existing database setup
 

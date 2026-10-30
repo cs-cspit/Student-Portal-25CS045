@@ -1,107 +1,228 @@
-# StudentHub
+# CHARUSAT StudentHub — Unified Academic & Administration Platform
 
-StudentHub is a student-portal coursework prototype with a public home page, student registration, login, a protected academic workspace, and retained practical exercises.
+[![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?style=flat&logo=php&logoColor=white)](https://www.php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-4479A1?style=flat&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![Apache](https://img.shields.io/badge/Apache-2.4%2B-D22128?style=flat&logo=apache&logoColor=white)](https://httpd.apache.org/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Academic Year](https://img.shields.io/badge/Academic_Year-2026--27-indigo)](https://charusat.ac.in)
 
-## Run with XAMPP
+> **Charotar University of Science and Technology (CHARUSAT)**  
+> **Faculty of Technology and Engineering (FTE) · Chandubhai S. Patel Institute of Technology (CSPIT)**  
+> **Department of Computer Science & Engineering (CSE) · Semester 3 (Odd Term) Division-I**
 
-1. Copy the project folder into `C:\xampp\htdocs`.
-2. Start **Apache** in the XAMPP Control Panel.
-3. Open `http://localhost/Student-Portal-25CS045-main/` (or replace the URL folder name with the name you chose).
-4. Choose **Register** to create a student account, then log in with the student ID or email and password.
+---
 
-The `data/` directory must be writable by PHP. Registration requires MySQL and also writes to `data/accounts.csv` to preserve the existing CSV-backed login flow. Passwords are hashed before being saved to both stores. Direct web access to CSV records is blocked by `data/.htaccess`. The pre-existing `data/registrations.csv` and its records remain unchanged.
+## Overview
 
-## Account flow
+**StudentHub** is an enterprise-grade full-stack university portal prototype integrating coursework tracking, official timetable matrices, homework and deliverables management, attendance auditing against university eligibility criteria, academic transcripts, and role-protected administrative tools.
 
-- Public home: `index.php`, with Log in and Register choices.
-- Registration: `register.php` collects name, age, student ID, college or registered personal email, phone, gender, enrolled course, password, and password confirmation.
-- Successful registration redirects to `login.php`.
-- Login accepts a student ID or email, password, and a generated arithmetic verification question. `authenticate.php` checks the password hash with `password_verify()`, regenerates the session ID, and routes the account by role.
-- `dashboard.php` checks the authenticated session and routes Admin and Student accounts to their respective dashboards. `student_dashboard.php` and `admin_dashboard.php` enforce their role on every request. Idle sessions expire after 15 minutes; logout destroys the session and cookie.
-- The timetable supports previous and next weeks, individual weekdays, and a Today button.
+It preserves all academic lab requirements and curriculum implementations from **Practical 1 through Practical 14** while showcasing a modern tokenized design system ("Indigo Ink & Amber"), collapsible icon-rail sidebars, and full CHARUSAT branding.
 
-## Events and database setup
+---
 
-1. Start **Apache** and **MySQL** in the XAMPP Control Panel.
-2. For a new database, import `database/studenthub.sql`. For an existing database, apply the needed one-time migrations in order: `001` password hash, `002` Student/Admin role, `003` separate Admin accounts, `004` student status, `005` event posters, and `006` audit logs. Skip migrations already applied.
-3. Import `practicals/practical10/user_registration.sql` to add demo Student and Admin login accounts.
-4. The local XAMPP defaults in `db.php` are host `127.0.0.1`, database `studenthub`, and user `root` with an empty password. Set `STUDENTHUB_DB_HOST`, `STUDENTHUB_DB_NAME`, `STUDENTHUB_DB_USER`, and `STUDENTHUB_DB_PASSWORD` in PHP’s environment to use different credentials. Keep real database credentials out of the project files.
-5. Open `http://localhost/Student-Portal-25CS045-main/test_connection.php` to confirm the connection and view upcoming event data retrieved with a prepared query.
-6. Sign in and choose **Events** from the student dashboard. The page loads upcoming events from MySQL and lets the signed-in student reserve a place. If MySQL is not configured, it displays a read-only local event preview instead.
-
-### Practical 10 demo accounts
-
-- Admin: `admin.demo@example.edu` / `Admin@12345`
-- Student: `student.demo@example.edu` / `Student@12345`
-- Login includes the arithmetic security check; answer it in the form.
-- Sessions expire after 15 minutes without activity. `timeout.php` redirects an expired session to the login screen.
-
-Student accounts are checked and inserted in MySQL with prepared statements and are also kept in the CSV account file used by the existing login flow. Event registrations are kept in MySQL; the API synchronizes the signed-in student's basic profile into the `students` table when they register for an event.
-
-## Practical 9 registration checks
-
-The portal registration page enforces required fields, email format, password confirmation, and duplicate student ID/email checks in both storage locations. It hashes the password with `password_hash()` before insertion, then writes the matching CSV account row. See `practicals/practical9/README.md` for the check list and setup steps.
-
-## Practical 7 code
-
-The manual-aligned exercise is in `practicals/practical7/`. Its `index.html` form collects name, email, mobile number, course (B.Tech, BCA, or B.Sc), and message. It posts to `php-registration.php`, which validates and sanitizes the values, appends valid rows to `data/registrations.csv`, and shows success or error feedback. This coursework exercise is separate from the portal account registration at `register.php`.
-
-Open `http://localhost/Student-Portal-25CS045-main/practicals/practical7/` under XAMPP to run the exercise.
-
-## Project layout
+## Repository Architecture & Directory Structure
 
 ```text
 Student-Portal-25CS045-main/
-├── index.php                  # Public landing page
-├── login.php                  # Login form and arithmetic verification
-├── authenticate.php           # MySQLi login, password_verify and session renewal
-├── register.php               # Validated registration with hashed MySQL and CSV storage
-├── logout.php                 # Session and cookie invalidation
-├── dashboard.php              # Session check and role-based dashboard router
-├── student_dashboard.php      # Session-protected student workspace
-├── admin_dashboard.php         # Admin-only dashboard
-├── timeout.php                # Expired-session redirect
-├── db.php                     # PDO event connection and MySQLi authentication connection
-├── database/
-│   └── studenthub.sql         # Full normalized database dump for a new install
-├── migrations/                # One-time updates for existing installations
-├── test_connection.php        # Prepared-query connection check
-├── events_api.php             # Upcoming events and event registration endpoint
-├── admin_events.php           # Integrated Fetch-based Admin event manager
-├── student_management.php     # Admin student CRUD, filters and CSV export
-├── admin_register.php         # Restricted administrator account setup
-├── includes/auth.php          # Session, CSRF, escaping and access helpers
-├── includes/audit.php         # Admin audit logging
-├── css/
-│   ├── auth.css               # Public, login, and registration screens
-│   ├── studyhub.css           # Protected workspace and events calendar design
-├── js/studyhub.js             # Portal screens, filters, timetable and interactions
-├── data/                      # Protected local CSV data and event fallback JSON
-├── uploads/event-posters/     # Validated event poster uploads
-├── docs/                      # Deployment and Practical 15 test/security report
-└── practicals/
-    ├── README.md               # Practical source map
-    ├── practical7/             # Manual-aligned POST and CSV practical
-    ├── practical9/             # Registration validation notes
-    ├── practical10/            # Authentication SQL and test notes
-    ├── practical11/            # Student CRUD evidence checklist
-    ├── practical12/            # Event/poster evidence checklist
-    ├── practical13/            # Fetch API source and evidence notes
-    ├── practical14/            # RBAC/audit source and evidence notes
-    └── archive/                # Inactive prototype retained for reference
+│
+├── admin/                      # Administrative Portal Module (RBAC: Admin)
+│   ├── admin_audit.php         # Real-time security audit trail
+│   ├── admin_dashboard.php     # Administration overview & analytics
+│   ├── admin_events.php        # Campus event creation & poster manager
+│   ├── admin_inquiries.php     # Student help requests & contact applications review
+│   ├── admin_notices.php       # Dynamic campus circular publisher
+│   ├── admin_register.php      # Restricted administrative account onboarding
+│   ├── admin_registrations.php # Student event RSVP attendee manager
+│   ├── admin_settings.php      # System settings & maintenance modes
+│   └── student_management.php  # Student directory, CRUD, filters & CSV export
+│
+├── student/                    # Student Academic Workspace (RBAC: Student)
+│   ├── student_assignments.php # Two-column deliverable hub with deadline tracking
+│   ├── student_attendance.php  # Course-wise attendance register & 75% rule audit
+│   ├── student_courses.php     # Semester 3 CSE enrolled subjects & faculty directory
+│   ├── student_dashboard.php   # Interactive Single-Page Application (SPA) dashboard
+│   ├── student_events.php      # Campus hackathons, workshops & RSVP booking
+│   ├── student_help.php        # Knowledge base, 6 help topics, ticket submission & chat
+│   ├── student_notices.php     # Live synchronized notice board
+│   ├── student_profile.php     # Student profile, security & credentials
+│   ├── student_results.php     # Official transcript & SGPA credit calculations
+│   └── student_schedule.php    # Official CHARUSAT Weekly Timetable & Daily Agenda
+│
+├── pages/                      # Public Informational Pages
+│   ├── about.php               # Institutional mission & architecture
+│   ├── contact.php             # Academic support desk with CSV persistence
+│   ├── faq.php                 # Searchable frequently asked questions
+│   ├── help.html               # Standalone Help Center template
+│   ├── timeout.php             # 15-minute idle session termination redirect
+│   └── unauthorized.php        # HTTP 403 Role-Based Access Control gate
+│
+├── api/                        # Backend RESTful JSON Controllers
+│   ├── events_api.php          # Event query & capacity-safe reservation endpoint
+│   └── notices_api.php         # Live administrative notice synchronization API
+│
+├── database/                   # Database Schemas & Setup Documentation
+│   ├── README.md               # Step-by-step database import instructions
+│   ├── schema.sql              # Clean DDL table schemas
+│   ├── studenthub.sql          # Full database dump with demo records
+│   └── test_connection.php     # Live connection diagnostic & health check script
+│
+├── docs/                       # Structured Technical Documentation
+│   ├── academic/               # Timetable & Semester 3 CSE faculty scheme
+│   ├── database/               # Entity Relationship (ER) & schema reference
+│   ├── deployment/             # Local XAMPP and Apache web server setup
+│   ├── design-system/          # UI/UX tokens, typography & color guidelines
+│   ├── git/                    # Git staging, commit & GitHub push guide
+│   ├── practicals/             # Practicals 1 to 14 Comprehensive Inventory
+│   └── security/               # Security, RBAC, CSRF & audit verification
+│
+├── includes/                   # Modular Layout Templates & Security Middleware
+│   ├── admin_sidebar.php       # Collapsible navigation rail for administration
+│   ├── audit.php               # Security action audit logger
+│   ├── auth.php                # Session security, CSRF tokens & role enforcement
+│   ├── bottom_nav.php          # Mobile bottom app navigation
+│   ├── helpers.php             # Sanitization, avatar initials & HTML utilities
+│   ├── layout_footer.php       # Footer with brand & script hooks
+│   ├── layout_head.php         # Meta headers, tokens.css, font & theme scripts
+│   ├── layout_topbar.php       # Topbar with CHARUSAT brand pill, search & theme toggle
+│   └── student_sidebar.php     # Collapsible navigation rail for students
+│
+├── css/                        # Tokenized CSS Architecture
+│   ├── app.css                 # Master workspace styles & timetable components
+│   ├── auth.css                # Authentication, landing, and public page styles
+│   ├── studyhub.css            # Legacy stylesheet (retained for backward compatibility)
+│   └── tokens.css              # Design tokens: palette, radii, shadows, typography
+│
+├── js/                         # Client-side Logic & Interactions
+│   ├── app.js                  # Theme switching, sidebar collapse & page search
+│   └── studyhub.js             # Reactive SPA dashboard, timetable & local state
+│
+├── images/                     # Institutional Brand Assets
+│   └── charusat-logo.png       # Transparent official CHARUSAT logo
+│
+├── data/                       # Structured Flat-File Storage (Practicals 6, 7, 9)
+│   ├── .htaccess               # Security access restriction for data files
+│   ├── accounts.csv            # Dual-persisted CSV accounts
+│   ├── events.json             # Event data fallback
+│   ├── notices.json            # Dynamic synchronized notices store
+│   └── registrations.csv       # Contact & support inquiries storage
+│
+├── migrations/                 # Incremental SQL Migrations (Practicals 8-14)
+├── practicals/                 # Academic Curriculum Submissions (Practicals 1 to 14)
+│   ├── practical7/             # POST form processing & CSV persistence
+│   ├── practical9/             # Server-side validation & hashing
+│   ├── practical10/            # Session authentication & SQL demo accounts
+│   ├── practical11/            # Student CRUD evidence
+│   ├── practical12/            # Event creation & poster uploads
+│   ├── practical13/            # Fetch API integration
+│   ├── practical14/            # RBAC & audit trail logging
+│   └── archive/                # Reference prototype files
+│
+├── structure/                  # Visual Architecture, ER Model & Roadmap PNGs
+│   ├── academic-workflow.png   # Practicals 1 to 14 lab delivery roadmap
+│   ├── database-architecture.png # Entity-Relationship diagram & dual connectivity
+│   ├── sitemap.png             # Hierarchical high-level portal sitemap
+│   └── system-architecture.png # 4-tier enterprise system architecture
+│
+├── uploads/                    # User File Uploads & Posters
+├── .gitignore                  # Git Ignore configuration
+├── authenticate.php            # Login authentication processing
+├── dashboard.php               # Session validation & smart role router
+├── db.php                      # MySQLi & PDO database connection provider
+├── index.html                  # Static landing page & client fallback
+├── index.php                   # Public landing page entrypoint
+├── login.php                   # User sign-in interface
+├── logout.php                  # Secure session destruction
+├── register.php                # Validated student onboarding form
+└── README.md                   # Repository overview & setup documentation
 ```
 
-The root is kept as the web application root so existing XAMPP routes remain simple. Private/generated CSV data and uploaded posters are excluded from Git by `.gitignore`; do not commit real student records or credentials. See `docs/test-security-report.md` and `docs/local-deployment.md` for Practical 15 evidence and deployment steps.
+---
 
-`index.html` forwards to the PHP home page for compatibility. Old registration pages are archived and are not part of the active site.
+## Architecture & Visual Diagrams
 
-## Prototype limits
+To assist faculty evaluation and technical audits, high-resolution architectural diagrams are provided in the [`structure/`](structure/) directory:
 
-The account workflow runs locally in PHP. It does not verify that a student ID or email belongs to a college, send email verification, or connect to a college identity provider. The arithmetic CAPTCHA is suitable only as a coursework demonstration. Course schedules, attendance, grades, and notices remain labelled sample data; they are not official student records. Login recovery, official submissions, and institutional services are not connected.
+### 1. 4-Tier Enterprise System Architecture
+Visual breakdown of the Presentation Layer, PHP 8 Modular Engine, Security & Middleware Layer, and Data & Persistence Layer:
+![System Architecture](structure/system-architecture.png)
 
-## Technologies
+### 2. Database Architecture & Entity-Relationship (ER) Model
+Relational schema showing primary/foreign keys, unique constraints, and the dual PDO/MySQLi connection engine:
+![Database ER Diagram](structure/database-architecture.png)
 
-HTML5, CSS3, JavaScript, PHP, MySQLi, PDO/MySQL, and CSV/JSON data.
+### 3. Portal Sitemap & Navigation Hierarchy
+High-level routing map from public gateway through access control to student workspace and administrative operations:
+![Portal Sitemap](structure/sitemap.png)
 
+### 4. Academic Practicals Progression & Lab Roadmap
+Five-phase academic progression mapping Practicals 1 to 14 against university assessment rubrics:
+![Academic Workflow](structure/academic-workflow.png)
 
+---
 
+## Quick Start (Run Locally with XAMPP)
+
+1. Clone or copy this repository into your XAMPP web root:
+   ```bash
+   C:\xampp\htdocs\Student-Portal-25CS045-main
+   ```
+2. Start **Apache** and **MySQL** in the XAMPP Control Panel.
+3. Open MySQL (phpMyAdmin at `http://localhost/phpmyadmin/` or terminal) and import the database:
+   ```sql
+   CREATE DATABASE studenthub CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   USE studenthub;
+   SOURCE database/studenthub.sql;
+   SOURCE practicals/practical10/user_registration.sql;
+   ```
+4. Access the portal in your browser:
+   ```
+   http://localhost/Student-Portal-25CS045-main/
+   ```
+
+---
+
+## Demo Accounts
+
+| Role | Username / Identifier | Password | Access Level |
+|:---|:---|:---|:---|
+| **Student** | `student.demo@example.edu` *(or `25CS045`)* | `Student@12345` | Academic Workspace, Courses, Timetable, Attendance, Assignments |
+| **Administrator** | `admin.demo@example.edu` | `Admin@12345` | Student Management, Audit Trail, Notice Publishing, Event Approvals |
+
+*Note: All logins include a dynamic arithmetic security check (e.g. 5 + 3 = 8) to satisfy Practical 10 requirements.*
+
+---
+
+## Pushing to GitHub
+
+Follow the dedicated guide in [`docs/git/GITHUB_PUSH_GUIDE.md`](docs/git/GITHUB_PUSH_GUIDE.md):
+
+```bash
+# Initialize and push to your remote repository
+git status
+git add .
+git commit -m "feat: organized repository architecture with modular student, admin, api, database & docs folders"
+git branch -M main
+git remote add origin https://github.com/<your-username>/<your-repo-name>.git
+git push -u origin main
+```
+
+---
+
+## Documentation Links
+
+- [Practicals 1 to 14 Inventory](docs/practicals/PRACTICALS_INVENTORY.md)
+- [Official CHARUSAT Timetable & Faculty Directory](docs/academic/TIMETABLE_AND_COURSES.md)
+- [Design System & UI Guidelines](docs/design-system/DESIGN_SYSTEM.md)
+- [Database Schema Reference](docs/database/DATABASE_SCHEMA.md)
+- [Local Deployment Guide](docs/deployment/local-deployment.md)
+- [Security & Test Report](docs/security/test-security-report.md)
+- [GitHub Push Guide](docs/git/GITHUB_PUSH_GUIDE.md)
+
+---
+
+## Technical Stack
+
+- **Backend**: PHP 8.1+ (Strict types, Prepared PDO & MySQLi statements, Session hardening)
+- **Frontend**: Vanilla ECMAScript 2022, CSS Custom Properties (Tokens), HTML5 semantic structure
+- **Database**: MySQL 8.0+ / MariaDB 10.4+ (InnoDB Engine, utf8mb4)
+- **Security**: Password hashing (`password_hash`), Session fixation protection (`session_regenerate_id`), CSRF validation, XSS escaping (`htmlspecialchars`), Role-Based Access Control (RBAC)

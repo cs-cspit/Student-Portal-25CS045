@@ -1,7 +1,8 @@
 <?php
 declare(strict_types=1);
-require __DIR__ . '/includes/auth.php';
-require __DIR__ . '/db.php';
+$root = dirname(__DIR__);
+require $root . '/includes/auth.php';
+require $root . '/db.php';
 
 app_require_login();
 header('Content-Type: application/json; charset=utf-8');
@@ -124,3 +125,4 @@ try {
     }
     events_api_reply(['ok' => false, 'message' => 'Registration could not be completed. Check the database setup and try again.'], 503);
 }
+

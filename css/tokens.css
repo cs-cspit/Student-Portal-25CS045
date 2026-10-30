@@ -1,0 +1,144 @@
+/* StudentHub Design System Tokens - Indigo Ink & Amber */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+:root {
+  /* Core Theme Tokens - Light Mode */
+  --primary: #3B3BB3;
+  --primary-hover: #2F2F94;
+  --primary-foreground: #FFFFFF;
+  --primary-subtle: #EEEEFB;
+  --accent: #F5A524;
+  --accent-hover: #E0931B;
+  --accent-foreground: #1B1B2F;
+  --background: #FAFAF7;
+  --surface: #FFFFFF;
+  --surface-hover: #F8F8FC;
+  --surface-raised: #FFFFFF;
+  --border: #E6E4DC;
+  --border-subtle: #F0EFE8;
+  --text: #1B1B2F;
+  --text-muted: #5E5E78;
+  --text-light: #8C8CA1;
+  --sidebar-bg: #15163A;
+  --sidebar-text: #C9CAF0;
+  --sidebar-text-muted: #8E90BC;
+  --sidebar-active: #262866;
+  --sidebar-hover: #1E204E;
+
+  /* Semantic Colors */
+  --success: #15803D;
+  --success-subtle: #DCFCE7;
+  --warning: #B45309;
+  --warning-subtle: #FEF3C7;
+  --error: #C62828;
+  --error-subtle: #FEE2E2;
+  --info: #0369A1;
+  --info-subtle: #E0F2FE;
+
+  /* Geometry & Spacing */
+  --radius-card: 12px;
+  --radius-control: 8px;
+  --radius-pill: 9999px;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Shadows & Elevation */
+  --shadow-sm: 0 1px 2px rgba(15, 16, 32, 0.05);
+  --shadow-md: 0 4px 14px rgba(15, 16, 32, 0.08);
+  --shadow-lg: 0 14px 34px rgba(15, 16, 32, 0.12);
+  --focus-ring: 0 0 0 3px rgba(59, 59, 179, 0.25);
+}
+
+.dark, [data-theme="dark"] {
+  /* Core Theme Tokens - Dark Mode */
+  --primary: #8B8CF5;
+  --primary-hover: #A5A6FA;
+  --primary-foreground: #0F1020;
+  --primary-subtle: #23254A;
+  --accent: #FBBF4D;
+  --accent-hover: #FCD34D;
+  --accent-foreground: #0F1020;
+  --background: #0F1020;
+  --surface: #181A30;
+  --surface-hover: #20233F;
+  --surface-raised: #20233F;
+  --border: #2A2D4A;
+  --border-subtle: #21243D;
+  --text: #ECECF8;
+  --text-muted: #A3A5C4;
+  --text-light: #707292;
+  --sidebar-bg: #0B0C1C;
+  --sidebar-text: #A3A5C4;
+  --sidebar-text-muted: #6B6D8C;
+  --sidebar-active: #1C1E40;
+  --sidebar-hover: #151733;
+
+  /* Semantic Colors Dark */
+  --success: #4ADE80;
+  --success-subtle: rgba(74, 222, 128, 0.15);
+  --warning: #FBBF4D;
+  --warning-subtle: rgba(251, 191, 77, 0.15);
+  --error: #F87171;
+  --error-subtle: rgba(248, 113, 113, 0.15);
+  --info: #38BDF8;
+  --info-subtle: rgba(56, 189, 248, 0.15);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 14px 34px rgba(0, 0, 0, 0.6);
+  --focus-ring: 0 0 0 3px rgba(139, 140, 245, 0.35);
+}
+
+/* Admin Portal Overrides */
+[data-portal="admin"] {
+  --radius-card: 6px;
+  --radius-control: 6px;
+}
+
+/* Global Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.tabular-nums, table, .stat-value, .badge, time, input[type="number"], .counter {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Autofill Theme Consistency */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--surface) inset !important;
+  -webkit-text-fill-color: var(--text) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Accessible Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}

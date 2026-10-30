@@ -1,36 +1,340 @@
-/* Practical 10 role dashboard and access-control styling. */
-.admin-page{min-height:100vh;background:#f4f7fa;color:#24364a;font-family:Manrope,"DM Sans",Arial,sans-serif}
-.admin-shell{min-height:100vh;display:grid;grid-template-columns:245px minmax(0,1fr)}
-.admin-rail{position:sticky;top:0;height:100vh;padding:25px 18px;background:#132238;color:#d9e2ec;display:flex;flex-direction:column}
-.admin-brand{display:flex;align-items:center;gap:10px;color:#f5f8fb;font-size:16px;font-weight:750}
-.admin-brand:hover{text-decoration:none}
-.admin-brand small{display:block;margin-top:3px;color:#97a7b8;font-size:8px;letter-spacing:1.2px}
-.admin-nav-label{margin:45px 8px 12px;color:#91a0b1;font-size:9px;font-weight:700;letter-spacing:1.2px}
-.admin-nav-link{display:flex;align-items:center;gap:11px;margin:3px 0;padding:11px 12px;border-radius:7px;color:#c6d1dd;font-size:11px;font-weight:600}
-.admin-nav-link span{width:17px;color:#95d3c8}
-.admin-nav-link:hover,.admin-nav-link.is-active{background:#203950;color:#fff;text-decoration:none}
-.admin-rail-bottom{margin-top:auto}
-.admin-role-pill{display:block;margin:0 5px 10px;padding:8px 10px;border:1px solid #354d62;border-radius:20px;color:#c1e4db;font-size:9px;font-weight:700}
-.admin-logout{width:100%;padding:10px 12px;border:1px solid #405368;border-radius:7px;background:transparent;color:#e0e7ee;text-align:left;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer}
-.admin-logout:hover{background:#203950}
-.admin-main{width:min(100%,1120px);margin:0 auto;padding:40px 44px}
-.admin-topbar{display:flex;align-items:center;justify-content:space-between;padding-bottom:25px;border-bottom:1px solid #e0e7ed}
-.admin-topbar h1{margin:4px 0 0;color:#1d3046;font-size:25px;letter-spacing:-.5px}
-.admin-eyebrow{margin:0;color:#64817f;font-size:9px;font-weight:750;letter-spacing:1.2px}
-.admin-avatar{width:39px;height:39px;display:grid;place-items:center;border-radius:50%;background:#dceeea;color:#226f68;font-size:14px;font-weight:750}
-.admin-welcome{margin:30px 0 22px;padding:26px 28px;border:1px solid #dce7e9;border-radius:12px;background:linear-gradient(115deg,#fff 55%,#edf7f4)}
-.admin-welcome h2{margin:8px 0;color:#203349;font-size:20px}
-.admin-welcome>p:last-child{max-width:610px;margin:0;color:#687b8b;font-size:11px;line-height:1.7}
-.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
-.admin-card{position:relative;min-height:146px;padding:19px;border:1px solid #e0e7ec;border-radius:10px;background:#fff}
-.admin-card-icon{position:absolute;top:16px;right:17px;color:#a1b2bf;font-size:9px;font-weight:750;letter-spacing:.6px}
-.admin-card p{margin:12px 0 7px;color:#718292;font-size:10px;font-weight:600}
-.admin-card strong{display:block;overflow-wrap:anywhere;color:#24394c;font-size:13px}
-.admin-card small{display:block;margin-top:7px;color:#8a99a5;font-size:9px}
-.admin-note{margin-top:17px;padding:16px 19px;border-left:3px solid #338780;border-radius:5px;background:#eaf4f2}
-.admin-note strong{color:#2d5f5b;font-size:10px}
-.admin-note p{margin:5px 0 0;color:#657a7d;font-size:10px;line-height:1.6}
-.role-message{max-width:720px;margin:90px auto;padding:36px 30px;border:1px solid #e4e9ed;border-radius:12px;background:#fff;box-shadow:0 12px 36px rgba(25,43,61,.06)}
-.role-message h1{margin:7px 0 15px;color:#1c3048}
-.role-message .role-return{display:inline-flex;width:auto;text-decoration:none}
-@media(max-width:760px){.admin-shell{grid-template-columns:1fr}.admin-rail{position:relative;height:auto;padding:15px 18px}.admin-nav-label,.admin-nav-link{display:none}.admin-rail-bottom{position:absolute;top:15px;right:16px;display:flex;align-items:center;gap:8px}.admin-role-pill{margin:0}.admin-logout{width:auto;padding:8px 10px}.admin-main{padding:24px 17px}.admin-grid{grid-template-columns:1fr}.admin-topbar h1{font-size:20px}.role-message{margin:35px 15px;padding:25px 18px}}
+@import url("../../css/tokens.css");
+
+/* Practical 10 Role Dashboard & Access-Control Styling */
+.admin-page {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+.admin-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+}
+
+/* Full Viewport Sticky Admin Sidebar (Problem 1 fix) */
+.admin-rail {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 24px 16px 20px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 750;
+  text-decoration: none;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 18px;
+}
+
+.admin-brand small {
+  display: block;
+  margin-top: 3px;
+  color: var(--sidebar-text-muted);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.admin-nav-label {
+  margin: 16px 8px 8px;
+  color: var(--sidebar-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 2px 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-control);
+  color: var(--sidebar-text);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.admin-nav-link span {
+  width: 18px;
+  color: var(--sidebar-text-muted);
+  font-size: 16px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.admin-nav-link:hover {
+  background-color: var(--sidebar-hover);
+  color: #FFFFFF;
+}
+
+.admin-nav-link.is-active {
+  background-color: var(--sidebar-active);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.admin-nav-link.is-active span, .admin-nav-link:hover span {
+  color: var(--accent);
+}
+
+.admin-rail-bottom {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-role-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.admin-logout {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--sidebar-text);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.admin-logout:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+.admin-main {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.admin-topbar h1 {
+  margin: 4px 0 0;
+  color: var(--text);
+  font-size: 26px;
+  letter-spacing: -0.5px;
+}
+
+.admin-eyebrow {
+  margin: 0;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.admin-avatar {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #5B5CE0);
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Welcome Card */
+.admin-welcome {
+  margin: 24px 0 24px;
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--primary-subtle) 100%);
+}
+
+.admin-welcome h2 {
+  margin: 6px 0;
+  color: var(--text);
+  font-size: 22px;
+}
+
+.admin-welcome > p:last-child {
+  max-width: 650px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Stat Cards (Problem 2 & 4 fix) */
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-card {
+  position: relative;
+  min-height: auto;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-card-icon {
+  display: none; /* Removed numbering 01/02/03/04 per Problem 2 */
+}
+
+.admin-card p {
+  margin: 0 0 8px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-card strong {
+  display: block;
+  font-size: 26px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.admin-card small {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* Table Cards (Problem 7 fix) */
+.admin-note {
+  margin-top: 20px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-note strong {
+  color: var(--text);
+  font-size: 16px;
+  font-family: var(--font-heading);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.admin-note p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.admin-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.admin-data-table th, .admin-data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+.admin-data-table th {
+  background-color: var(--background);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.admin-data-table tbody tr:hover {
+  background-color: var(--surface-hover);
+}
+
+.role-message {
+  max-width: 680px;
+  margin: 80px auto;
+  padding: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.role-message h1 {
+  margin: 10px 0 16px;
+  color: var(--text);
+  font-size: 26px;
+}
+
+.role-message .role-return {
+  display: inline-flex;
+  margin-top: 16px;
+}
+
+@media (max-width: 1024px) {
+  .admin-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .admin-shell {
+    grid-template-columns: 1fr;
+  }
+  .admin-rail {
+    display: none;
+  }
+  .admin-main {
+    padding: 20px 16px;
+  }
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}

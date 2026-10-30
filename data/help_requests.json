@@ -1,0 +1,63 @@
+[
+  {
+    "id": "TICK-26-801",
+    "name": "Prachi Modi",
+    "student_id": "25CS045",
+    "email": "25cs045@charusat.edu.in",
+    "phone": "+91 98741 25302",
+    "category": "Attendance & Schedule",
+    "subject": "FCN Lab Schedule Conflict Inquiry",
+    "message": "Hello, I wanted to inquire about the Thursday 1:10 PM FCN Lab Batch allocation in Room 631. The timetable indicates C1 batch has WDF lab simultaneously. Please confirm the lab batch grouping.",
+    "status": "in_progress",
+    "priority": "Normal",
+    "source": "Student Portal",
+    "admin_notes": "Coordinator reviewed: C1 batch lab venue confirmed at CSPIT 632.",
+    "created_at": "2026-10-29 11:42:00"
+  },
+  {
+    "id": "TICK-26-802",
+    "name": "Hetvi Patel",
+    "student_id": "24CS012",
+    "email": "h1@gmail.com",
+    "phone": "+91 98543 56565",
+    "category": "Login & Access",
+    "subject": "Password reset link not received",
+    "message": "I requested a password reset for my institutional student account yesterday evening but haven't received the verification token in my inbox or spam folder.",
+    "status": "open",
+    "priority": "High",
+    "source": "Student Portal",
+    "admin_notes": "",
+    "created_at": "2026-10-30 09:15:30"
+  },
+  {
+    "id": "TICK-26-803",
+    "name": "Diya Sharma",
+    "student_id": "25CS089",
+    "email": "diya.sharma@charusat.edu.in",
+    "phone": "+91 98765 43210",
+    "category": "Courses & Registration",
+    "subject": "Elective selection confirmation",
+    "message": "Kindly verify if my registration for Web Development Frameworks (ITUE204) was successfully recorded in the central academic registrar.",
+    "status": "resolved",
+    "priority": "Normal",
+    "source": "Contact Form",
+    "admin_notes": "Resolved by Admin: Enrolled in Division-I Section B.",
+    "created_at": "2026-10-28 14:20:10"
+  },
+  {
+    "id": "TICK-26-804",
+    "name": "Aarav Shah",
+    "student_id": "24DCS001",
+    "email": "aarav.demo@example.edu",
+    "phone": "+91 90000 00001",
+    "category": "Assignments & Results",
+    "subject": "Grade recalculation for DSA Practical 4",
+    "message": "My submission for Binary Search Tree traversal was evaluated, but the rubric marks for time complexity analysis have not updated on the transcript.",
+    "status": "open",
+    "priority": "Normal",
+    "source": "Student Portal",
+    "admin_notes": "",
+    "created_at": "2026-10-30 14:05:00"
+  }
+]
+

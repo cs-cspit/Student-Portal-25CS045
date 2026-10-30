@@ -79,6 +79,25 @@ CREATE TABLE IF NOT EXISTS registrations (
     ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
+CREATE TABLE IF NOT EXISTS help_requests (
+  request_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  ticket_code VARCHAR(30) NOT NULL UNIQUE,
+  student_id VARCHAR(30) NULL,
+  sender_name VARCHAR(120) NOT NULL,
+  sender_email VARCHAR(190) NOT NULL,
+  sender_phone VARCHAR(30) NULL,
+  category VARCHAR(80) NOT NULL DEFAULT 'General Inquiry',
+  subject VARCHAR(200) NOT NULL,
+  message TEXT NOT NULL,
+  status ENUM('open', 'in_progress', 'resolved') NOT NULL DEFAULT 'open',
+  admin_notes TEXT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (request_id),
+  KEY idx_help_status (status),
+  KEY idx_help_student (student_id)
+) ENGINE=InnoDB;
+
 -- Example student accounts are used only by the database connection check.
 INSERT IGNORE INTO students (student_id, full_name, age, email, phone, gender, course)
 VALUES
