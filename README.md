@@ -226,4 +226,4 @@ git push -u origin main
 - **Frontend**: Vanilla ECMAScript 2022, CSS Custom Properties (Tokens), HTML5 semantic structure
 - **Database**: MySQL 8.0+ / MariaDB 10.4+ (InnoDB Engine, utf8mb4)
 - **Security**: Password hashing (`password_hash`), Session fixation protection (`session_regenerate_id`), CSRF validation, XSS escaping (`htmlspecialchars`), Role-Based Access Control (RBAC)
-
+>>>>>>>>> Temporary merge branch 2
